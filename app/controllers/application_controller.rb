@@ -1,6 +1,9 @@
 class ApplicationController < ActionController::API
   respond_to :json
 
+rescue_from ActiveRecord::RecordNotFound, with: :unauthorized_error
+rescue_from AuthorizationError, with: :unauthorized_error
+
   def render_resource(resource)
     if resource.errors.empty?
       render json: resource
@@ -21,5 +24,17 @@ class ApplicationController < ActionController::API
       ]
     }, status: :bad_request
   end
-  
+
+  def authorize_owner_resource(resource)
+    raise AuthorizationError.new if resource.owner != current_owner
+  end
+
+  def unauthorized_error
+    render json: { message: 'You are not authorized to make that request'}, status: 401
+  end
+
+  def not_found
+    render json: { message: 'Resource not found'}, status: 404
+  end
+
 end

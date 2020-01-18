@@ -1,12 +1,12 @@
 require 'rails_helper'
 
-Rspec.describe 'POST /login', type: :request do
+RSpec.describe 'POST /login', type: :request do
   let(:user) { Fabricate(:user) }
   let(:url) { '/login' }
   let(:params) do
     {
       user: {
-        email: user.email
+        email: user.email,
         password: user.password
       }
     }
@@ -38,12 +38,12 @@ Rspec.describe 'POST /login', type: :request do
     it 'returns unauthorized status' do
       # puts response.headers
       # puts '----'
-      expect(response.status)to eq 401
+      expect(response.status).to eq 401
     end
   end
 end
 
-Rspec.describe 'DELETE /logout', type: :request do
+RSpec.describe 'DELETE /logout', type: :request do
   let(:url) { '/logout'}
 
   it 'returns 204, no content' do
@@ -53,22 +53,23 @@ Rspec.describe 'DELETE /logout', type: :request do
   end
 
   let(:user) { Fabricate(:user) }
-  let(:login_url) { 'login' }
+  let(:login_url) { '/login' }
   let(:protected_url) { '/jobs' }
   let(:params) do
     {
       user: {
-        email: user.email
+        email: user.email,
         password: user.password
       }
     }
   end
 
+
   it 'blacklists the jwt token' do
     get protected_url
     expect(response).to have_http_status(401)
     post login_url, params: params
-    token = resonse.headers['Authorization'].split(' ').last
+    token = response.headers['Authorization'].split(' ').last
     expect(token).to be_present
     get protected_url, headers: { Authorization: "Bearer #{token}" }
     puts response.body

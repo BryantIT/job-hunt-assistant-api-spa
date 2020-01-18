@@ -23,11 +23,16 @@ RSpec.describe 'POST /signup', type: :request do
       # puts response.headers['Authorization']
       # expect(response.body).to match_schema('owner')
     end
+
+    it 'returns a JWT' do
+      puts response.headers['Authorization']
+      expect(response.headers['Authorization']).to be_present
+    end
   end
 
   context 'when user already exists' do
     before do
-      Fabricate :user, email: params [:user][:email]
+      Fabricate :user, email: params[:user][:email]
       post url, params: params
     end
 

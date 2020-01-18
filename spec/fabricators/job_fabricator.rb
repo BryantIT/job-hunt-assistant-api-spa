@@ -1,18 +1,15 @@
 Fabricator(:job) do
-  name {Faker::Name.name}
-  email {Faker::Internet.email}
-  password {Faker::Internet.password}
-
   company_name {Faker::Company.name}
   contact_name {Faker::Name.name}
   email {Faker::Internet.email}
-  address {
+  address do {
     "Street"=>Faker::Address.street_address,
     "Address2"=>Faker::Address.building_number,
     "City"=>Faker::Address.city,
     "State"=>Faker::Address.state_abbr,
     "Zipcode"=>Faker::Address.zip_code
   }
+  end
   fax {Faker::PhoneNumber.cell_phone}
   phone1 {Faker::PhoneNumber.cell_phone}
   phone2 {Faker::PhoneNumber.cell_phone}

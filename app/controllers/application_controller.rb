@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::API
-  respond_to :json
 
 rescue_from ActiveRecord::RecordNotFound, with: :unauthorized_error
 rescue_from AuthorizationError, with: :unauthorized_error
@@ -13,7 +12,7 @@ rescue_from AuthorizationError, with: :unauthorized_error
   end
 
   def validation_error(resource)
-    rendor json: {
+    render json: {
       errors: [
         {
           status: '400',

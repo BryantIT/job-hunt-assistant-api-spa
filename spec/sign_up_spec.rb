@@ -27,7 +27,7 @@ RSpec.describe 'POST /signup', type: :request do
 
   context 'when user already exists' do
     before do
-      fabricate :user, email: params [:user][:email]
+      Fabricate :user, email: params [:user][:email]
       post url, params: params
     end
 

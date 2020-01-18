@@ -12,6 +12,8 @@ Rails.application.routes.draw do
                 sessions: 'sessions',
                 registrations: 'registrations'
               }
-
+  resources :users do
+    resources :jobs
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

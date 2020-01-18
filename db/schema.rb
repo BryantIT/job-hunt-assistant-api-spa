@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_18_012657) do
+ActiveRecord::Schema.define(version: 2020_01_18_014126) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2020_01_18_012657) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "job_apps", force: :cascade do |t|
+  create_table "jobs", force: :cascade do |t|
     t.string "company_name"
     t.string "contact_name"
     t.string "email"
@@ -58,7 +58,13 @@ ActiveRecord::Schema.define(version: 2020_01_18_012657) do
     t.text "company_notes"
     t.integer "salary"
     t.bigint "user_id"
-    t.index ["user_id"], name: "index_job_apps_on_user_id"
+    t.index ["user_id"], name: "index_jobs_on_user_id"
+  end
+
+  create_table "jwt_blacklist", force: :cascade do |t|
+    t.string "jti", null: false
+    t.datetime "exp", null: false
+    t.index ["jti"], name: "index_jwt_blacklist_on_jti"
   end
 
   create_table "users", force: :cascade do |t|

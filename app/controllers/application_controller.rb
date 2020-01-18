@@ -24,8 +24,8 @@ rescue_from AuthorizationError, with: :unauthorized_error
     }, status: :bad_request
   end
 
-  def authorize_owner_resource(resource)
-    raise AuthorizationError.new if resource.owner != current_owner
+  def authorize_user_resource(resource)
+    raise AuthorizationError.new if resource.user != current_user
   end
 
   def unauthorized_error

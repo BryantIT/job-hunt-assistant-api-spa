@@ -23,7 +23,8 @@ gem 'puma', '~> 4.1'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'devise-jwt'
 gem 'rspec-rails', groups: [:development, :test]
-
+gem 'fabrication', groups: [:development, :test]
+gem 'faker', groups: [:development, :test]
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors'
 

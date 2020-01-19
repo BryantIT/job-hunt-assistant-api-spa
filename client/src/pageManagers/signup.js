@@ -5,8 +5,6 @@ class SignupPage() {
   }
 
   render() {
-    this.container.innerHTML = '
-    <h1>Where am I?</h1>
-    '
+    this.container.innerHTML = '<h1>Where am I?</h1>'
   }
 }

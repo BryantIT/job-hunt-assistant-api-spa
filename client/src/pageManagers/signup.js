@@ -1,10 +1,10 @@
-class SignupPage() {
+class SignupPage(){
 
-  constructor(container) {
+  constructor(container){
     this.container = container
   }
 
-  render() {
+  render(){
     this.container.innerHTML = '<h1>Where am I?</h1>'
   }
 }

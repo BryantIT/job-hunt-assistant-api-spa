@@ -1,3 +1,3 @@
 document.addEventListener('DOMcontentLoaded', () => {
-  new App
+  new App()
 })

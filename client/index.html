@@ -29,13 +29,12 @@
   <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-  <div id="navbar-container">
 
+  <div id="navbar-container">
     <nav class="nav">
       <div class="burger">
         <div class="burger__patty"></div>
       </div>
-
       <ul class="nav__list">
         <li class="nav__item">
           <a href="#1" class="nav__link c-blue"><img src="styles/img/home-icon.png" alt=""></a>
@@ -46,14 +45,61 @@
         <li class="nav__item">
           <a href="#4" class="nav__link c-blue"><img src="styles/img/logout.png" alt=""></a>
         </li>
-
       </ul>
     </nav>
-
   </div>
 
   <div id="app-container">
-
+    <section class="panel b-green" id="1">
+      <article class="panel__wrapper">
+        <div class="panel__content">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-8 col-md-offset-2">
+                <div class="registration-content">
+                  <div class="heading">
+                    <h4>Welcome</h4>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-8">
+                      <div class="registration-form">
+                        <form id="registration" action="" method="post">
+                          <fieldset>
+                            <input name="name" type="text" class="form-control" id="name" placeholder="Your Name" required>
+                          </fieldset>
+                          <fieldset>
+                            <input name="email" type="email" class="form-control" id="email" placeholder="Email" required>
+                          </fieldset>
+                          <fieldset>
+                            <input name="password" type="password" class="form-control" id="password" placeholder="Password" required>
+                          </fieldset>
+                          <fieldset>
+                            <button type="submit" id="login-submit" class="btn">Login</button>
+                          </fieldset>
+                        </form>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="more-info">
+                        <p>This web app is designed to help you organize your job hunt. Keep track of jobs you want to apply to. Keeps notes on the process for each company. Land that job!<br><br>
+                          <em>"Leap, and the net will appear.",
+                            <br>~ John Burroughs, Naturalist (1837-1921) ~</em></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="footer">
+                  <p>Copyright &copy; 2020 Way of the Code
+                    | Designed by Bryant Richards</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
   </div>
 
 

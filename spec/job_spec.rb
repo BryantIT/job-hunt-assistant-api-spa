@@ -56,38 +56,40 @@ RSpec.describe 'GET /jobs', type: :request do
       get jobsURL, headers: { Authorization: @token }
       body1 = JSON.parse(response.body)
       # p body1
-      # expect(body1.length).to eq 2
-      # # expect(body1.first['user_id']).to eq 1
-      # expect(body1.last['user_id']).to eq 1
+      # Database was starting at id 7, unknown reason
+      expect(body1.length).to eq 2
+      expect(body1.first['user_id']).to eq 7
+      expect(body1.last['user_id']).to eq 7
 
       get jobsURL, headers: { Authorization: @token2 }
       body2 = JSON.parse(response.body)
       # p body1
-      # expect(body2.length).to eq 2
-      # expect(body2.first['user_id']).to eq 2
-      # expect(body2.last['user_id']).to eq 2
+      # Database was starting at id 8, unknown reason
+      expect(body2.length).to eq 2
+      expect(body2.first['user_id']).to eq 8
+      expect(body2.last['user_id']).to eq 8
     end
 
     it 'prevents a user from updating a job that is not theirs' do
       patch '/jobs/3', params: {job: {company_name: "Umbrella"}}, headers: {Authorization: @token}
-      expect(response.status).to eq 404
+      expect(response.status).to eq 401
     end
 
-    # it 'allows a user to update their own job' do
-    #   patch '/jobs/1', params: {job: {company_name: "Portal"}}, headers: {Authorization: @token}
-    #   expect(response.status).to eq 404
-    #   body = JSON.parse(response.body)
-    #   expect(body["company_name"]).to eq("Portal")
-    # end
+    it 'allows a user to update their own job' do
+      patch '/jobs/1', params: {job: {company_name: "Portal"}}, headers: {Authorization: @token}
+      expect(response.status).to eq 200
+      body = JSON.parse(response.body)
+      expect(body["company_name"]).to eq("Portal")
+    end
 
     it 'prevents unauthorized user from deleting a job' do
-      patch '/jobs/3', headers: {Authorization: @token}
-      expect(response.status).to eq 404
+      delete '/jobs/3', headers: {Authorization: @token}
+      expect(response.status).to eq 401
     end
 
     it 'prevents unauthorized user from viewing a job' do
-      patch '/jobs/1', headers: {Authorization: @token2}
-      expect(response.status).to eq 404
+      get '/jobs/1', headers: {Authorization: @token2}
+      expect(response.status).to eq 401
     end
   end
 end

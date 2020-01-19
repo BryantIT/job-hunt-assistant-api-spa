@@ -25,6 +25,7 @@ gem 'devise-jwt'
 gem 'rspec-rails', groups: [:development, :test]
 gem 'fabrication', groups: [:development, :test]
 gem 'faker', groups: [:development, :test]
+gem 'dotenv-rails', groups: [:development, :test]
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors'
 

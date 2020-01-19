@@ -4,7 +4,7 @@ class JobsController < ApplicationController
   def index
     jobs = current_user.jobs
 
-    render json: jobs, status: 200
+    render json: jobs
   end
 
   def new

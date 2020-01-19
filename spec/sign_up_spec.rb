@@ -11,18 +11,19 @@ RSpec.describe 'POST /signup', type: :request do
     }
   end
 
-  context 'when user is authenticated' do
+  context 'when user is unauthenticated' do
     before { post url, params: params}
 
     it 'return 200' do
       expect(response.status).to eq 200
     end
 
-    # it 'returns a new user' do
-    #   puts response.body
-    #   # puts response.headers['Authorization']
-    #   # expect(response.body).to match_schema('user')
-    # end
+  #   it 'returns a new user' do
+  #     # puts response.body
+  #   #   puts response.body
+  #   #   # puts response.headers['Authorization']
+  #   #   # expect(response.body).to match_schema('user')
+  #   end
 
     it 'returns a JWT' do
       puts response.headers['Authorization']

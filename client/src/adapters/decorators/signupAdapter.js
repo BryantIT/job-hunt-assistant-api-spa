@@ -12,4 +12,12 @@ class SignupAdapter{
   get headers(){
     return this.baseAdapter.headers
   }
+
+  async signup(params){
+    fetch(`${this.baseURL}/signup`, {
+      method: 'POST',
+      headers: this.headers,
+      body: JSON.stringify(params)
+    })
+  }
 }

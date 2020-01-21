@@ -1,7 +1,8 @@
 class SignupPage {
 
-  constructor(container) {
+  constructor(container, adapter) {
     this.container = container
+    this.adapter = new SignupAdapter(adapter)
   }
 
   get staticHTML() {
@@ -20,7 +21,7 @@ class SignupPage {
                 <div class="6u 12u$(xsmall)">
                   <input type="password" name="password" id="password" value="" placeholder="Password" required>
                 </div>
-                
+
                 <div class="12u$">
                   <ul class="actions">
                     <li><input type="submit" value="Sign In" /></li>

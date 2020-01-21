@@ -20,5 +20,7 @@ class SignupAdapter{
       body: JSON.stringify(params)
     })
     this.baseAdapter.checkStatus(res)
+    this.baseAdapter.token res.headers.get('authorization').split(' ')[1]
+    
   }
 }

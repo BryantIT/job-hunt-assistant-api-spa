@@ -14,7 +14,7 @@ class SignupAdapter{
   }
 
   async signup(params){
-    fetch(`${this.baseURL}/signup`, {
+    const res = await fetch(`${this.baseURL}/signup`, {
       method: 'POST',
       headers: this.headers,
       body: JSON.stringify(params)

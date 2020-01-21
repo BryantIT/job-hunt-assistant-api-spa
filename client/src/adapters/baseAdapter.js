@@ -16,4 +16,10 @@ class BaseAdapter{
     }
     return baseHeaders
   }
+
+  checkStatus(res){
+    if(res.status < 200 || res.status > 299){
+      throw new Error(res.status)
+    }
+  }
 }

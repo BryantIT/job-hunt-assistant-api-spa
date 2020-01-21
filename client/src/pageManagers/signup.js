@@ -1,11 +1,15 @@
+class SignupPage {
 
-class SignupPage{
-
-  constructor(container){
+  constructor(container) {
     this.container = container
   }
 
-  render(){
-    this.container.innerHTML = '<h1>Hello World</h1>'
+  get staticHTML() {
+    return (`
+    
+    `)
+  }
+  render() {
+    this.container.innerHTML = this.staticHTML
   }
 }

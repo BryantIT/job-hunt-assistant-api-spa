@@ -1,8 +1,6 @@
-class SignupPage {
+class SignupPage extends PageManager{
 
-  constructor(container, adapter) {
-    this.container = container
-    this.adapter = new SignupAdapter(adapter)
+
   }
 
   get staticHTML() {
@@ -34,8 +32,5 @@ class SignupPage {
         </div>
       </section>
     `)
-  }
-  render() {
-    this.container.innerHTML = this.staticHTML
   }
 }

@@ -13,6 +13,10 @@ class SignupAdapter{
     return this.baseAdapter.headers
   }
 
+  checkStatus(res){
+    this.baseAdapter.checkStatus(res)
+  }
+
   async signup(params){
     const res = await fetch(`${this.baseURL}/signup`, {
       method: 'POST',

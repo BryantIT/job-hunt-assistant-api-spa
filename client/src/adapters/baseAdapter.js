@@ -1,6 +1,6 @@
 class BaseAdapter{
 
-  constructor(baseURL){
+  constructor(baseURL = 'http://localhost:3000'){
     this.baseURL = baseURL
     this.token = null
   }

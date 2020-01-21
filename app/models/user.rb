@@ -5,4 +5,8 @@ class User < ApplicationRecord
           :registerable, jwt_revocation_strategy: JwtBlacklist
 
   has_many :jobs, dependent: :destroy
+
+  validates:name, presence: true
+  validates:email, presence: true
+  validates:password, presence: true
 end

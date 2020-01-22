@@ -3,7 +3,7 @@ class App{
   constructor(){
     this.adapter = new BaseAdapter()
     this.initBindingsAndEventListeners()
-    this.renderPage(new SignupPage(this.pageContainer, this.adapter))
+    this.renderPage()
   }
 
   initBindingsAndEventListeners(){

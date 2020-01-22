@@ -7,4 +7,8 @@ class Router{
     this.rootPage = this.routes[rootPageKey]
   }
 
+  render(page){
+    this.routes[page].render()
+  }
+
 }

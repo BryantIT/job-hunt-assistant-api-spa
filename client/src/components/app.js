@@ -4,7 +4,9 @@ class App{
     this.adapter = new BaseAdapter()
     this.initBindingsAndEventListeners()
     this.router = new Router({
-      'welcome': new WelcomePage()
+      'welcome': new WelcomePage(this.pageContainer, this.adapter),
+      'login': new LoginPage(this.pageContainer, this.adapter),
+      'signup': new SignupPage(this.pageContainer, this.adapter)
     })
   }
 

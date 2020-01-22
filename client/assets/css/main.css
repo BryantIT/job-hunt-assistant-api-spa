@@ -1620,7 +1620,7 @@
 	body, input, select, textarea {
 		font-family: "Open Sans", Arial, Helvetica, sans-serif;
 		font-size: 13pt;
-		font-weight: 300;
+		font-weight: normal;
 		line-height: 1.65;
 	}
 
@@ -1682,6 +1682,7 @@
 
 	p {
 		margin: 0 0 2em 0;
+
 	}
 
 	h1, h2, h3, h4, h5, h6 {
@@ -3467,7 +3468,7 @@
 		-ms-transition: -ms-transform 0.5s ease, box-shadow 0.5s ease, visibility 0.5s;
 		transition: transform 0.5s ease, box-shadow 0.5s ease, visibility 0.5s;
 		-webkit-overflow-scrolling: touch;
-		background: #f64242;
+		background: #0f0808;
 		box-shadow: none;
 		color: #ffffff;
 		height: 100%;

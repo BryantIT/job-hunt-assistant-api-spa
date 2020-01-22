@@ -8,7 +8,7 @@ class App{
       'login': new LoginPage(this.pageContainer, this.adapter),
       'signup': new SignupPage(this.pageContainer, this.adapter)
     })
-
+    this.router.assignCallback(this.pageManagerRedirect.bind(this))
     this.renderPage('welcome')
   }
 
@@ -17,6 +17,10 @@ class App{
     this.pageAlert = document.querySelector('#alert-container')
     this.navbarContainer = document.querySelector('#navbar-container')
     this.pageContainer = document.querySelector('#page-container')
+  }
+
+  pageManagerRedirect(page){
+    this.renderPage(page)
   }
 
   renderPage(page){

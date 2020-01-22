@@ -1,26 +1,34 @@
-class LoginPage extends PageManager{
+class LoginPage extends PageManager {
 
-  constructor(container, adapter){
+  constructor(container, adapter) {
     super(container)
     this.adapter = new LoginAdapter(adapter)
   }
 
-  initBindingsAndEventListeners(){
+  initBindingsAndEventListeners() {
     this.form = this.container.querySelector('form#login-form')
     this.form.addEventListener('submit', this.handleSubmit.bind(this))
   }
 
-  handleSubmit(e){
+  async handleSubmit(e) {
     e.preventDefault()
     const [email, password] = Array.from(e.target.querySelectorAll('input')).map(i => i.value)
     const params = {
-      user: {email, password}
+      user: {
+        email,
+        password
+      }
     }
-    this.adapter.login(params)
-  }
+      try {
+        await this.adapter.login(params)
+        this.redirect('welcome')
+      } catch (err) {
+        alert(err)
+      }
+    }
 
-  get staticHTML() {
-    return (`
+    get staticHTML() {
+      return (`
       <section id="one" class="wrapper post bg-img" data-bg="banner2.jpg" style="background-image: url(assets/images/banner2.jpg);">
         <div class="inner current">
         <h2>Please Login</h2>
@@ -45,5 +53,5 @@ class LoginPage extends PageManager{
         </div>
       </section>
     `)
+    }
   }
-}

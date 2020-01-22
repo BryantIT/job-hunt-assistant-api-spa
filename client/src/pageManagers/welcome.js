@@ -1,0 +1,3 @@
+class WelcomePage extends PageManager{
+
+}

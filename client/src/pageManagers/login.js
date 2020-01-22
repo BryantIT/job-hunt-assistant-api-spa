@@ -1,0 +1,3 @@
+class LoginPage extends PageManager{
+  
+}

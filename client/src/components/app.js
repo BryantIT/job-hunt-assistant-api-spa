@@ -8,6 +8,8 @@ class App{
       'login': new LoginPage(this.pageContainer, this.adapter),
       'signup': new SignupPage(this.pageContainer, this.adapter)
     })
+
+    this.renderPage('welcome')
   }
 
   initBindingsAndEventListeners(){

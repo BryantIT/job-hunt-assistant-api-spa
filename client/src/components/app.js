@@ -3,7 +3,9 @@ class App{
   constructor(){
     this.adapter = new BaseAdapter()
     this.initBindingsAndEventListeners()
-    this.renderPage()
+    this.router = new Router({
+      'welcome': new WelcomePage()
+    })
   }
 
   initBindingsAndEventListeners(){
@@ -14,6 +16,6 @@ class App{
   }
 
   renderPage(page){
-    page.render()
+    this.router.render(page)
   }
 }

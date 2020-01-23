@@ -3,6 +3,7 @@ class App{
   constructor(){
     this.adapter = new BaseAdapter()
     this.initBindingsAndEventListeners()
+    this.alertManager = new Alert(this.alertContainer, this.adapter),
     this.router = new Router({
       'welcome': new WelcomePage(this.pageContainer, this.adapter),
       'login': new LoginPage(this.pageContainer, this.adapter),
@@ -14,17 +15,18 @@ class App{
     this.router.assignNavbar(navbar)
     this.router.assignCallback(this.pageManagerRedirect.bind(this))
     this.renderPage('welcome')
+    this.handleAlert('Hellow World', 'success')
   }
 
   initBindingsAndEventListeners(){
     this.container = document.querySelector('#app-container')
-    this.pageAlert = document.querySelector('#alert-container')
+    this.alertContainer = document.querySelector('#alert-container')
     this.navbarContainer = document.querySelector('#navbar-container')
     this.pageContainer = document.querySelector('#page-container')
   }
 
-  handleNotification(msg, type){
-    
+  handleAlert(msg, type, timeout = 5000){
+    this.alertManager.render(msg, type, timeout)
   }
 
   pageManagerRedirect(page){

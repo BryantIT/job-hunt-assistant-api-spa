@@ -1,11 +1,20 @@
 class PageManager{
 
-  constructor(container, adapter) {
+  constructor(container, adapter){
     this.container = container
   }
 
   fetchAndRenderPageResources(){
     return null
+  }
+
+  handleError(err){
+    if(err.type === "Authorization Error"){
+      this.handleAlert(err.msg)
+      this.redirect('welcome')
+    }else{
+      this.handleAlert(err)
+    }
   }
 
   render(){

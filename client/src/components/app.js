@@ -3,7 +3,7 @@ class App{
   constructor(){
     this.adapter = new BaseAdapter()
     this.initBindingsAndEventListeners()
-    this.alertManager = new Alert(this.alertContainer, this.adapter),
+    this.alertManager = new Alert(this.alertContainer),
     this.router = new Router({
       'welcome': new WelcomePage(this.pageContainer, this.adapter),
       'login': new LoginPage(this.pageContainer, this.adapter),

@@ -13,7 +13,7 @@ class ProfileAdapter{
     return this.baseAdapter.headers
   }
 
-  async getJobs(){
+  async getUser(){
     const res = await fetch(`${this.baseURL}/jobs`, {
       headers: this.headers
     })

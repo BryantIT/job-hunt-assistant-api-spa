@@ -7,18 +7,6 @@ class JobsController < ApplicationController
     render json: jobs
   end
 
-  def new
-    job = Job.new
-  end
-
-  def create
-    job = Job.new(job_params)
-    job.user = current_user
-    job.save
-    render_resource(job)
-
-end
-
   def show
     job = Job.find(params[:id])
     authorize_user_resource(job)
@@ -26,8 +14,11 @@ end
     render_resource(job)
   end
 
-  def edit
-    job = Job.find_by_id(params[:id])
+  def create
+    job = Job.new(job_params)
+    job.user = current_user
+    job.save
+    render_resource(job)
   end
 
   def update
@@ -35,7 +26,6 @@ end
     authorize_user_resource(job)
     job.update(job_params)
     render_resource(job)
-
   end
 
   def destroy
@@ -43,8 +33,6 @@ end
     authorize_user_resource(job)
     job.destroy
     render_resource(job)
-
-    # render json: {jobId :job.id, message: "Has been deleted!"}
   end
 
   private

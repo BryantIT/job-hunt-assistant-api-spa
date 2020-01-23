@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :jobs
   root to: 'home#index'
+  get '/profile' => 'home#profile'
   devise_for :users,
               path: '',
               path_names: {

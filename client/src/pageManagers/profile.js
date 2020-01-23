@@ -11,8 +11,8 @@ class ProfilePage extends PageManager{
 
   async fetchAndRenderPageResources(){
     try{
-      const jobs = await this.adapter.getJobs()
-      this.container.innerHTML = jobs.map(j => j.company_name).join('')
+      const userObj = await this.adapter.getUser()
+      const user = new User(userObj)
     }catch(err){
       this.handleError(err)
     }

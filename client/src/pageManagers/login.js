@@ -29,7 +29,7 @@ class LoginPage extends PageManager {
 
     get staticHTML() {
       return (`
-      <section id="one" class="wrapper post bg-img" data-bg="banner2.jpg" style="background-image: url(assets/images/banner2.jpg);">
+      <section id="one" class="wrapper post bg-img" data-bg="banner1.jpg" style="background-image: url(assets/images/banner1.jpg);">
         <div class="inner current">
         <h2>Please Login</h2>
           <article class="box">

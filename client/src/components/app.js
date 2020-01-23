@@ -10,8 +10,9 @@ class App{
       'profile': new ProfilePage(this.pageContainer, this.adapter)
     })
 
-    this.navbar = new Navbar(this.navbarContainer, this.adapter)
+    const navbar = new Navbar(this.navbarContainer, this.adapter)
     this.router.assignCallback(this.pageManagerRedirect.bind(this))
+    this.router.assignNavbar(navbar)
     this.renderPage('welcome')
   }
 

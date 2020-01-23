@@ -2,7 +2,7 @@ class Navbar extends PageManager{
 
   constructor(container, adapter){
     super(container)
-    this.adapter - this.adapter
+    this.adapter = adapter
   }
 
   get is_authenticated(){
@@ -15,7 +15,7 @@ class Navbar extends PageManager{
   }
 
   handleClick(e){
-    of(e.target.tageName === "A"){
+    if(e.target.tageName === "A"){
       console.log(e.target)
     }
   }

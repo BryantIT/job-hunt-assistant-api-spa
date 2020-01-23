@@ -12,10 +12,10 @@ class App{
     })
 
     const navbar = new Navbar(this.navbarContainer, this.adapter)
+    this.router.assignAlertHandler(this.handleAlert.bind(this))
     this.router.assignNavbar(navbar)
-    this.router.assignCallback(this.pageManagerRedirect.bind(this))
+    this.router.assignRedirect(this.pageManagerRedirect.bind(this))
     this.renderPage('welcome')
-    this.handleAlert('Hellow World', 'success')
   }
 
   initBindingsAndEventListeners(){

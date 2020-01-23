@@ -9,6 +9,19 @@ class Navbar extends PageManager{
     return !!this.adapter.token
   }
 
+  initBindingsAndEventListeners(){
+
+    this.container.addEventListener('click', this.handleClick.bind(this))
+  }
+
+  handleClick(e){
+    of(e.target.tageName === "A"){
+      console.log(e.target)
+    }
+  }
+
+
+
   get staticHTML(){
 
     if(this.is_authenticated){

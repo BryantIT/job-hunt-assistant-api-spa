@@ -10,13 +10,16 @@ class Navbar extends PageManager{
   }
 
   initBindingsAndEventListeners(){
-
+    this.menu = document.getElementById('menu')
+    this.menu.addEventListener('click', this.handleClick.bind(this))
     this.container.addEventListener('click', this.handleClick.bind(this))
   }
 
   handleClick(e){
-    if(e.target.tageName === "A"){
-      console.log(e.target)
+    if(e.target.tagName === "A"){
+      e.preventDefault()
+      const route = e.target.id.split('-')[0]
+      if(route !== this.currentPage()) {this.redirect(route)}
     }
   }
 
@@ -28,9 +31,9 @@ class Navbar extends PageManager{
       return(`
         <nav id="menu">
           <ul class="links">
-            <li><a href="index.html" id="profile-link">Profile</a></li>
-            <li><a href="generic.html" id="jobs-link">Jobs</a></li>
-            <li><a href="elements.html" id="logout-link">Logout</a></li>
+            <li><a href="#" id="profile-link">Profile</a></li>
+            <li><a href="#" id="jobs-link">Jobs</a></li>
+            <li><a href="#" id="logout-link">Logout</a></li>
           </ul>
         </nav>
         `)
@@ -38,9 +41,9 @@ class Navbar extends PageManager{
       return(`
         <nav id="menu">
           <ul class="links">
-            <li><a href="index.html" id="welcome-link">Welcome</a></li>
-            <li><a href="generic.html" id="signup-link">Signup</a></li>
-            <li><a href="elements.html" id="login-link">Login</a></li>
+            <li><a href="#" id="welcome-link">Welcome</a></li>
+            <li><a href="#" id="signup-link">Signup</a></li>
+            <li><a href="#" id="login-link">Login</a></li>
           </ul>
         </nav>
         `)

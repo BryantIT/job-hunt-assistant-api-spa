@@ -13,16 +13,21 @@ class Router {
     if (this.navbar) {
       this.navbar.render()
     }
+    this.currentPage = page
   }
 
   assignCallback(callback) {
     for(let route in this.routes) {
       this.routes[route].redirect = callback
     }
+    if(this.navbar){this.navbar.redirect = callback}
   }
 
   assignNavbar(navbar) {
     this.navbar = navbar
+    this.navbar.currentPage = () => {
+      return this.currentPage
+    }
   }
 
 

@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  before_action :authenticate_owner!
+  before_action :authenticate_user!
 
   def index
     render json: {msg: 'Hello World'}
@@ -7,6 +7,6 @@ class HomeController < ApplicationController
 
   def profile
     user = current_user
-    render_resource(user, with: [:jobs])
+    render_resource(user)
   end
 end

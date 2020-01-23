@@ -14,7 +14,7 @@ class ProfileAdapter{
   }
 
   async getUser(){
-    const res = await fetch(`${this.baseURL}/jobs`, {
+    const res = await fetch(`${this.baseURL}/profile`, {
       headers: this.headers
     })
     await this.baseAdapter.checkStatus(res)

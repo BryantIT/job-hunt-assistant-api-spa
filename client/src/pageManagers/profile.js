@@ -10,6 +10,19 @@ class ProfilePage extends PageManager{
     return null
   }
 
+
+  finalBindingsAndEventListeners(){
+    const jobList = this.container.querySelector('table')
+    jobList.addEventListener('click', this.handleJobClick.bind(this))
+  }
+
+  handleJobClick(e){
+    if(e.target.tagName === "A"){
+      const jobId = e.target.dataset.id
+      this.renderJob(jobId)
+    }
+  }
+
   async fetchAndRenderPageResources(){
     try{
       const userObj = await this.adapter.getUser()
@@ -17,18 +30,6 @@ class ProfilePage extends PageManager{
       this.renderUser()
     }catch(err){
       this.handleError(err)
-    }
-  }
-
-  finalBindingsAndEventListeners(){
-    const jobList = this.container.querySelector('tr')
-    jobList.addEventListener('click', this.handleJobClick.bind(this))
-  }
-
-  handleJobClick(e){
-    if(e.target.tagName === "A"){
-      const jobId = e.target.dataset.id
-      this.renderJob(job)
     }
   }
 
@@ -45,7 +46,7 @@ class ProfilePage extends PageManager{
     `)
   }
 
-  renderJob(job){
+  renderJob(id){
     const job = this.user.jobs.find(j => j.id == id)
     if(job){
       this.container.innerHTML = job.showHTML

@@ -51,12 +51,11 @@ class Job{
         <div class="inner current">
           <header>
             <h3>${this.company_name}</h3>
-            <p>
-              ${this.company_notes}
-            </p>
+            <h4>${this.company_notes}</h4>
           </header>
           <article class="box">
-            Contact Person: ${this.contact_name}, Number: ${this.phone1} or ${this.phone2}, Email: ${this.email}
+            <h4>Contact Person: ${this.contact_name}</h4>
+            <p>Number: ${this.phone1} or ${this.phone2}, Email: ${this.email}</p>
           </article>
           <button id="edit-job" type="submit" class="button special fit">Edit</button>
         </div>

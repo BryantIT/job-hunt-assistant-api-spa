@@ -12,6 +12,25 @@
 
 <body>
 
+  <section id="one" class="wrapper post bg-img" data-bg="banner2.jpg" style="background-image: url(assets/images/banner2.jpg);">
+    <div class="inner current">
+      <header>
+        <h2>${this.company_name}</h2>
+        <h4>${this.company_notes}</h4>
+      </header>
+      <article class="box">
+        <span class="image left">
+          <img src="assets/images/pic02.jpg" alt="">
+        </span>
+        <ul class="alt">
+          <li><h4>Contact Person: ${this.contact_name}</h4></li>
+          <li><strong>Number:</strong> ${this.phone1} or ${this.phone2}, <strong>Email:</strong> ${this.email}</li>
+        </ul>
+      </article>
+      <button id="edit-job" type="submit" class="button special fit">Edit</button>
+    </div>
+  </section>
+
 </body>
 
 </html>

@@ -29,6 +29,7 @@ class User{
                     ${this.jobs.map(j => j.tbAndLinkHTML).join()}
               </table>
             </div>
+            <ul></ul>
           </article>
         </div>
       </section>

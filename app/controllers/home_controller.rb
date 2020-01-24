@@ -7,6 +7,6 @@ class HomeController < ApplicationController
 
   def profile
     user = current_user
-    render_resource(user)
+    render_resource(user, with: [:jobs])
   end
 end

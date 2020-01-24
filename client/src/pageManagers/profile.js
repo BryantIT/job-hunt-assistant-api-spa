@@ -20,6 +20,18 @@ class ProfilePage extends PageManager{
     }
   }
 
+  finalBindingsAndEventListeners(){
+    const jobList = this.container.querySelector('tr')
+    jobList.addEventListener('click', this.handleJobClick.bind(this))
+  }
+
+  handleJobClick(e){
+    if(e.target.tagName === "A"){
+      const jobId = e.target.dataset.id
+      this.renderJob(job)
+    }
+  }
+
   get staticHTML(){
     return (`
       <div class="loader">
@@ -33,7 +45,18 @@ class ProfilePage extends PageManager{
     `)
   }
 
+  renderJob(job){
+    const job = this.user.jobs.find(j => j.id == id)
+    if(job){
+      this.container.innerHTML = job.showHTML
+    }else this.handleError({
+      type: "404 Not Found",
+      msg: "Job was not found"
+    })
+  }
+
   renderUser(){
     this.container.innerHTML = this.user.profileHTML
+    this.finalBindingsAndEventListeners()
   }
 }

@@ -45,6 +45,25 @@ class Job{
     this.salary = salary
   }
 
+  get showHTML(){
+    return(`
+      <section id="one" class="wrapper post bg-img" data-bg="banner2.jpg" style="background-image: url(assets/images/banner2.jpg);">
+        <div class="inner current">
+          <header>
+            <h3>${this.company_name}</h3>
+            <p>
+              ${this.company_notes}
+            </p>
+          </header>
+          <article class="box">
+            Contact Person: ${this.contact_name}, Number: ${this.phone1} or ${this.phone2}, Email: ${this.email}
+          </article>
+          <button id="edit-job" type="submit" class="button special fit">Edit</button>
+        </div>
+      </section>
+      `)
+  }
+
   get tbAndLinkHTML(){
     return(`
       <tbody>

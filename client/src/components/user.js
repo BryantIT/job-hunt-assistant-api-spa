@@ -33,6 +33,7 @@ class User{
           </article>
         </div>
       </section>
+
       `)
   }
 }

@@ -12,24 +12,44 @@
 
 <body>
 
-  <section id="one" class="wrapper post bg-img" data-bg="banner2.jpg" style="background-image: url(assets/images/banner2.jpg);">
+  <section id="two" class="wrapper post bg-img" data-bg="banner2.jpg" style="background-image: url(assets/images/banner2.jpg);">
     <div class="inner current">
-      <header>
-        <h2>${this.company_name}</h2>
-        <h4>${this.company_notes}</h4>
-      </header>
       <article class="box">
-        <span class="image left">
-          <img src="assets/images/pic02.jpg" alt="">
-        </span>
         <ul class="alt">
-          <li><h4>Contact Person: ${this.contact_name}</h4></li>
-          <li><strong>Number:</strong> ${this.phone1} or ${this.phone2}, <strong>Email:</strong> ${this.email}</li>
+          <p>
+            <li><strong>Notes</strong></li>
+            <div class="row">
+              <div class="6u 12u$(small)">
+                <h3>Phone Interview Notes</h3>
+                <p>${this.phone_interview_notes}</p>
+              </div>
+            </div>
+            <div class="6u$ 12u$(small)">
+              <h3>In-Person Interview Notes</h3>
+              <p>${this.in_person_notes}</p>
+            </div>
         </ul>
       </article>
-      <button id="edit-job" type="submit" class="button special fit">Edit</button>
     </div>
   </section>
+
+  <h2>Notes</h2>
+					<p></p>
+					<div class="row">
+						<div class="6u 12u$(small)">
+							<h3>Company Notes</h3>
+							<p>${this.company_notes}</p>
+						</div>
+						<div class="6u$ 12u$(small)">
+							<h3>Phone Interview Notes</h3>
+							<p>${this.phone_interview_notes}</p>
+						</div>
+						<!-- Break -->
+						<div class="4u 12u$(medium)">
+							<h3>In-Person Notes</h3>
+							<p>${this.in_person_notes}</p>
+						</div>
+					</div>
 
 </body>
 

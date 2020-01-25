@@ -11,7 +11,7 @@ class ProfilePage extends PageManager{
   }
 
 
-  finalBindingsAndEventListeners(){
+  profileBindingsAndEventListeners(){
     const jobList = this.container.querySelector('table')
     jobList.addEventListener('click', this.handleJobClick.bind(this))
   }

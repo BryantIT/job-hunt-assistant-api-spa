@@ -16,6 +16,11 @@ class ProfilePage extends PageManager{
     jobList.addEventListener('click', this.handleJobClick.bind(this))
   }
 
+  jobBindingsAndEventListeners(){
+    const editButton = this.container.querySelector('editButton')
+    editButton.addEventListener('click', this.formalizeJob.bind(this) )
+  }
+
   handleJobClick(e){
     if(e.target.tagName === "A"){
       const jobId = e.target.dataset.id
@@ -56,6 +61,7 @@ class ProfilePage extends PageManager{
     const job = this.user.jobs.find(j => j.id == id)
     if(job){
       this.container.innerHTML = job.showHTML
+      this.jobBindingsAndEventListeners()
     }else this.handleError({
       type: "404 Not Found",
       msg: "Job was not found"
@@ -64,6 +70,6 @@ class ProfilePage extends PageManager{
 
   renderUser(){
     this.container.innerHTML = this.user.profileHTML
-    this.finalBindingsAndEventListeners()
+    this.profileBindingsAndEventListeners()
   }
 }

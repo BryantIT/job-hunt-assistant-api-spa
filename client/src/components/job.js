@@ -1,33 +1,20 @@
 class Job{
 
   constructor(job){
-    const{
-      id,
-      company_name,
-      contact_name,
-      email,
-      address,
-      fax,
-      phone1,
-      phone2,
-      has_applied,
-      application_date,
-      website,
-      application_link,
-      has_phone_interview,
-      phone_interview_date,
-      phone_interview_notes,
-      has_in_person,
-      in_person_interview,
-      in_person_notes,
-      company_notes,
-      salary
+    const{id, company_name, contact_name, email, street, address2, city, state,
+          zipcode, fax, phone1, phone2, has_applied, application_date, website,
+          application_link, has_phone_interview, phone_interview_date, phone_interview_notes,
+          has_in_person, in_person_interview, in_person_notes, company_notes, salary
     } = job
     this.id = id
     this.companyName = company_name
     this.contactName = contact_name
     this.email = email
-    this.address = address
+    this.street = street
+    this.address2 = address2
+    this.city = city
+    this.state = state
+    this.zipcode = zipcode
     this.fax = fax
     this.phone1 = phone1
     this.phone2 = phone2
@@ -67,9 +54,9 @@ class Job{
                 <strong>Fax:</strong> ${this.fax}<br>
                 <strong>Email:</strong> ${this.email}<br>
                 <strong>Address:</strong><br>
-                ${this.address.street}<br>
-                ${this.address.address2}<br>
-                ${this.address.city}, ${this.address.state} &nbsp&nbsp ${this.address.zipcode}
+                ${this.street}<br>
+                ${this.address2}<br>
+                ${this.city}, ${this.state} &nbsp&nbsp ${this.zipcode}
               </p>
               <p>
                 <li><strong>Application Information</strong></li>

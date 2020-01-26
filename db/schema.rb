@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_18_014126) do
+ActiveRecord::Schema.define(version: 2020_01_26_140921) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2020_01_18_014126) do
     t.string "company_name"
     t.string "contact_name"
     t.string "email"
-    t.hstore "address"
+    t.string "street"
     t.string "fax"
     t.string "phone1"
     t.string "phone2"
@@ -58,6 +58,10 @@ ActiveRecord::Schema.define(version: 2020_01_18_014126) do
     t.text "company_notes"
     t.integer "salary"
     t.bigint "user_id"
+    t.string "address2"
+    t.string "city"
+    t.string "state"
+    t.integer "zipcode"
     t.index ["user_id"], name: "index_jobs_on_user_id"
   end
 

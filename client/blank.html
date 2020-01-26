@@ -12,44 +12,108 @@
 
 <body>
 
+  <section id="one" class="wrapper post bg-img" data-bg="banner2.jpg" style="background-image: url(assets/images/banner2.jpg);">
+    <div class="inner current">
+      <header>
+        <h3>Add Your Job Prospect</h3>
+      </header>
+      <article class="box">
+        <form id="signup-form">
+          <div class="row uniform">
+            <div class="6u 12u$(xsmall)">
+              <input type="text" name="company_name" id="company_name" placeholder="Company Name" value="${job ? job.companyName : ''}" required>
+            </div>
+            <div class="6u$ 12u$(xsmall)">
+              <input type="text" name="contact_name" id="contact_name" placeholder="Contact Name" value="${job ? job.contactName : ''}">
+            </div>
+            <div class="6u 12u$(xsmall)">
+              <input type="email" name="email" id="email" placeholder="Email" value="${job ? job.email : ''}">
+            </div>
+            <div class="6u$ 12u$(xsmall)">
+              <input type="text" name="address" id="address" placeholder="Street" value="${job ? job.companyName : ''}">
+            </div>
+            <div class="6u$ 12u$(xsmall)">
+              <input type="text" name="address2" id="address2" placeholder="Address" value="${job ? job.companyName : ''}">
+            </div>
+            <div class="6u$ 12u$(xsmall)">
+              <input type="text" name="city" id="city" placeholder="City" value="${job ? job.companyName : ''}">
+            </div>
+            <div class="6u$ 12u$(xsmall)">
+              <input type="text" name="State" id="State" placeholder="State" value="${job ? job.companyName : ''}">
+            </div>
+            <div class="6u$ 12u$(xsmall)">
+              <input type="number" name="zipcode" id="zipcode" placeholder="Zipcode" value="${job ? job.companyName : ''}">
+            </div>
+            <div class="6u 12u$(xsmall)">
+              <input type="text" name="fax" id="fax" placeholder="Fax">
+            </div>
+            <div class="6u$ 12u$(xsmall)">
+              <input type="text" name="phone1" id="phone1" placeholder="Phone Number" value="${job ? job.companyName : ''}">
+            </div>
+            <div class="6u 12u$(xsmall)">
+              <input type="text" name="phone2" id="phone2" placeholder="Alt Phone Number" value="${job ? job.companyName : ''}">
+            </div>
+            <div class="6u$ 12u$(xsmall)">
+              <input type="url" name="website" id="website" placeholder="Website" value="${job ? job.companyName : ''}">
+            </div>
+            <div class="6u$ 12u$(xsmall)">
+              <input type="url" name="application_link" id="application_link" placeholder="Link to Application Page" value="${job ? job.companyName : ''}">
+            </div>
+            <div class="6u$ 12u$(xsmall)">
+              <input type="checkbox" name="has_applied" id="has_applied" placeholder="Website" value="${job ? job.companyName : ''}">
+            </div>
+            <div class="6u 12u$(xsmall)">
+              Application Date:<br>
+              <input type="date" name="application_date" id="application_date" value="${job ? job.companyName : ''}">
+            </div>
+            <div class="6u$ 12u$(xsmall)">
+              <input type="checkbox" name="has_phone_interview" id="has_phone_interview" placeholder="Website" value="${job ? job.companyName : ''}">
+            </div>
+            <div class="6u 12u$(xsmall)">
+              Application Date:<br>
+              <input type="date" name="phone_interview_date" id="phone_interview_date" value="${job ? job.companyName : ''}">
+            </div>
+            <div class="6u$ 12u$(xsmall)">
+              <input type="checkbox" name="has_in_person" id="has_in_person" placeholder="Website" value="${job ? job.companyName : ''}">
+            </div>
+            <div class="6u 12u$(xsmall)">
+              Application Date:<br>
+              <input type="date" name="in_person_interview" id="in_person_interview" value="${job ? job.companyName : ''}">
+            </div>
+            <div class="6u$ 12u$(xsmall)">
+              <input type="number" name="salary" id="salary" placeholder="Website" value="${job ? job.companyName : ''}">
+            </div>
+            <div class="12u$">
+              <ul class="actions">
+                <li><button type="submit" class="button special fit">Signup</button></li>
+              </ul>
+            </div>
+          </div>
+        </form>
+      </article>
+      <p>Add Notes</p>
+      <a href="#two" class="more">Learn More</a>
+    </div>
+  </section>
   <section id="two" class="wrapper post bg-img" data-bg="banner2.jpg" style="background-image: url(assets/images/banner2.jpg);">
     <div class="inner current">
       <article class="box">
-        <ul class="alt">
-          <p>
-            <li><strong>Notes</strong></li>
-            <div class="row">
-              <div class="6u 12u$(small)">
-                <h3>Phone Interview Notes</h3>
-                <p>${this.phone_interview_notes}</p>
-              </div>
-            </div>
-            <div class="6u$ 12u$(small)">
-              <h3>In-Person Interview Notes</h3>
-              <p>${this.in_person_notes}</p>
-            </div>
-        </ul>
+        <header>
+          <h2>Notes</h2>
+        </header>
+        <div class="6u 12u$(xsmall)">
+          <input type="textarea" name="phone_interview_notes" id="phone_interview_notes" value="${job ? job.companyName : ''}">
+        </div>
+        <div class="6u$ 12u$(xsmall)">
+          <input type="textarea" name="in_person_notes" id="in_person_notes" placeholder="Website" value="${job ? job.companyName : ''}">
+        </div>
+        <div class="6u 12u$(xsmall)">
+          <input type="textarea" name="company_notes" id="company_notes" value="${job ? job.companyName : ''}">
+        </div>
       </article>
+      <a href="#one" class="button alt small">Back</a>
     </div>
   </section>
-
-  <h2>Notes</h2>
-					<p></p>
-					<div class="row">
-						<div class="6u 12u$(small)">
-							<h3>Company Notes</h3>
-							<p>${this.company_notes}</p>
-						</div>
-						<div class="6u$ 12u$(small)">
-							<h3>Phone Interview Notes</h3>
-							<p>${this.phone_interview_notes}</p>
-						</div>
-						<!-- Break -->
-						<div class="4u 12u$(medium)">
-							<h3>In-Person Notes</h3>
-							<p>${this.in_person_notes}</p>
-						</div>
-					</div>
 
 </body>
 

@@ -35,14 +35,20 @@ class ProfilePage extends PageManager{
 
   get staticHTML(){
     return (`
-      <div class="loader">
-        <div class="face">
-          <div class="circle"></div>
+      <section id="one" class="wrapper post">
+        <div class="inner current">
+          <article class="box">
+            <div class="loader">
+              <div class="face">
+                <div class="circle"></div>
+              </div>
+              <div class="face">
+                <div class="circle"></div>
+              </div>
+            </div>
+          </article>
         </div>
-        <div class="face">
-          <div class="circle"></div>
-        </div>
-      </div>
+      </section>
     `)
   }
 

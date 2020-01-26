@@ -17,14 +17,27 @@ class ProfilePage extends PageManager{
   }
 
   jobBindingsAndEventListeners(){
-    const editButton = this.container.querySelector('editButton')
-    editButton.addEventListener('click', this.formalizeJob.bind(this) )
+    const editButton = this.container.querySelector('button')
+    editButton.addEventListener('click', this.formalizeJob.bind(this))
   }
 
   handleJobClick(e){
     if(e.target.tagName === "A"){
       const jobId = e.target.dataset.id
       this.renderJob(jobId)
+    }
+  }
+
+  formalizeJob(e){
+    const id = e.target.dataset.id
+    const job = this.user.jobs.find(j => j.id = id)
+    if(job){
+      this.container.innerHTML = job.formHTML
+    }else{
+      this.handleError({
+        type: "404 Not Found",
+        msg: "Job Was Not Found"
+      })
     }
   }
 

@@ -1,15 +1,15 @@
 class Job{
 
 
-  static get formHTML(type= "new"){
-    (`
+  static formHTML(job){
+    return (`
       <section id="one" class="wrapper post bg-img" data-bg="banner2.jpg" style="background-image: url(assets/images/banner2.jpg);">
         <div class="inner current">
           <header>
             <h3>Add Your Job Prospect</h3>
           </header>
           <article class="box">
-            <form id="${type}-job-form">
+            <form id="${job ? 'edit' : 'new'}-job-form">
               <div class="row uniform">
                 <div class="6u 12u$(xsmall)">
                   <input type="text" name="company_name" id="company_name" placeholder="Company Name" value="${job ? job.companyName : ''}" required>
@@ -23,35 +23,36 @@ class Job{
                 <div class="6u$ 12u$(xsmall)">
                   <input type="text" name="street" id="street" placeholder="Street" value="${job ? job.street : ''}">
                 </div>
-                <div class="6u$ 12u$(xsmall)">
+                <div class="6u 12u$(xsmall)">
                   <input type="text" name="address2" id="address2" placeholder="Apt/Floor/Building" value="${job ? job.address2 : ''}">
                 </div>
                 <div class="6u$ 12u$(xsmall)">
                   <input type="text" name="city" id="city" placeholder="City" value="${job ? job.city : ''}">
                 </div>
-                <div class="6u$ 12u$(xsmall)">
+                <div class="6u 12u$(xsmall)">
                   <input type="text" name="state" id="State" placeholder="State" value="${job ? job.state : ''}">
                 </div>
                 <div class="6u$ 12u$(xsmall)">
-                  <input type="number" name="zipcode" id="zipcode" placeholder="Zipcode" value="${job ? job.zipcode : ''}">
+                  <span>Zipcode:&nbsp</span><input type="number" name="zipcode" id="zipcode" placeholder="Zipcode" value="${job ? job.zipcode : ''}">
                 </div>
                 <div class="6u 12u$(xsmall)">
-                  <input type="text" name="fax" id="fax" placeholder="Fax" value="${job ? job.fax : ''}>
-                </div>
-                <div class="6u$ 12u$(xsmall)">
                   <input type="text" name="phone1" id="phone1" placeholder="Phone Number" value="${job ? job.phone1 : ''}">
                 </div>
-                <div class="6u 12u$(xsmall)">
+                <div class="6u$ 12u$(xsmall)">
                   <input type="text" name="phone2" id="phone2" placeholder="Alt Phone Number" value="${job ? job.phone2 : ''}">
                 </div>
-                <div class="6u$ 12u$(xsmall)">
-                  <input type="url" name="website" id="website" placeholder="Website" value="${job ? job.website : ''}">
+                <div class="6u 12u$(xsmall)">
+                <input type="text" name="fax" id="fax" placeholder="Fax Number" value="${job ? job.fax : ''}">
                 </div>
                 <div class="6u$ 12u$(xsmall)">
-                  <input type="url" name="application_link" id="application_link" placeholder="Link to Application Page" value="${job ? job.applicationLink : ''}">
+                  <input type="text" name="website" id="website" placeholder="Website" value="${job ? job.website : ''}">
                 </div>
-                <div class="6u$ 12u$(xsmall)">
+                <div class="6u 12u$(xsmall)">
+                  <input type="text" name="application_link" id="application_link" placeholder="Link to Application Page" value="${job ? job.applicationLink : ''}">
+                </div>
+                <div class="6u$ 12u$(small)">
                   <input type="checkbox" name="has_applied" id="has_applied" value="${job ? job.hasApplied : ''}">
+                  <label for="has_applied">Applied?</label>
                 </div>
                 <div class="6u 12u$(xsmall)">
                   Application Date:<br>
@@ -59,25 +60,23 @@ class Job{
                 </div>
                 <div class="6u$ 12u$(xsmall)">
                   <input type="checkbox" name="has_phone_interview" id="has_phone_interview" value="${job ? job.hasPhoneInterview : ''}">
+                  <label for="has_phone_interview">Phone Interview</label>
                 </div>
                 <div class="6u 12u$(xsmall)">
-                  Application Date:<br>
+                  Phone Interview Date:<br>
                   <input type="date" name="phone_interview_date" id="phone_interview_date" value="${job ? job.phoneInterviewDate : ''}">
                 </div>
                 <div class="6u$ 12u$(xsmall)">
                   <input type="checkbox" name="has_in_person" id="has_in_person" value="${job ? job.hasInPerson : ''}">
+                  <label for="has_in_person">In Person Interview</label>
                 </div>
                 <div class="6u 12u$(xsmall)">
-                  Application Date:<br>
+                  In Person Interview Date:<br>
                   <input type="date" name="in_person_interview" id="in_person_interview" value="${job ? job.inPersonInterview : ''}">
                 </div>
                 <div class="6u$ 12u$(xsmall)">
+                Salary:<br>
                   <input type="number" name="salary" id="salary" value="${job ? job.salary : ''}">
-                </div>
-                <div class="12u$">
-                  <ul class="actions">
-                    <li><button type="submit" class="button special fit">Submit</button></li>
-                  </ul>
                 </div>
               </div>
             </form>
@@ -92,17 +91,18 @@ class Job{
             <header>
               <h2>Notes</h2>
             </header>
-            <div class="6u 12u$(xsmall)">
-              <input type="textarea" name="phone_interview_notes" id="phone_interview_notes" value="${job ? job.phoneInterviewNotes : ''}">
-            </div>
-            <div class="6u$ 12u$(xsmall)">
-              <input type="textarea" name="in_person_notes" id="in_person_notes" placeholder="Website" value="${job ? job.inPersonNotes : ''}">
-            </div>
-            <div class="6u 12u$(xsmall)">
-              <input type="textarea" name="company_notes" id="company_notes" value="${job ? job.companyNotes : ''}">
-            </div>
+            Phone Interview Notes
+              <textarea id="phone_interview_notes" rows="4" value="${job ? job.phoneInterviewNotes : ''}"></textarea>
+            In Person Interview Notes
+              <textarea id="in_person_notes" rows="4" value="${job ? job.inPersonNotes : ''}"></textarea>
+            Overall Company Notes
+              <textarea id="company_notes" rows="4" value="${job ? job.companyNotes : ''}"></textarea>
           </article>
-          <a href="#one" class="button alt small">Back</a>
+          <div class="12u$">
+            <ul class="actions">
+              <li><button type="submit" class="button special fit">Submit</button></li>
+            </ul>
+          </div>
         </div>
       </section>
     `)
@@ -140,6 +140,10 @@ class Job{
     this.salary = salary
   }
 
+  get formHTML(){
+    return Job.formHTML(this)
+  }
+
 
 
   get showHTML(){
@@ -150,7 +154,7 @@ class Job{
           <header>
           <h2>${this.companyName}</h2>
           </header>
-          <button id="edit-job" type="submit" class="button special fit">Edit</button>
+          <button data-id="${this.id}" id="edit-dog" class="button special fit">Edit</button>
             <ul class="alt">
               <strong>Website</strong> &nbsp&nbsp || &nbsp&nbsp <strong>Application Website</strong><br>
               ${this.website} &nbsp&nbsp || &nbsp&nbsp ${this.applicationLink}
@@ -204,6 +208,7 @@ class Job{
                       <p>${this.inPersonNotes ? this.inPersonNotes : "None"}</p>
                     </div>
                   </div>
+
           </article>
           <a href="#one" class="button alt small">Back</a>
         </div>

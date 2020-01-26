@@ -1612,7 +1612,7 @@
 
 /* Type */
 
-	body {
+	body, input, select, textarea {
 		background-color: #1b1b1b;
 		color: rgba(255, 255, 255, 0.75);
 	}

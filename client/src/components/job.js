@@ -110,9 +110,9 @@ class Job{
 
   constructor(job){
     const{id, company_name, contact_name, email, street, address2, city, state,
-          zipcode, fax, phone1, phone2, has_applied, application_date, website,
-          application_link, has_phone_interview, phone_interview_date, phone_interview_notes,
-          has_in_person, in_person_interview, in_person_notes, company_notes, salary
+          zipcode, fax, phone1, phone2, has_applied, website,
+          application_link, has_phone_interview, phone_interview_notes,
+          has_in_person, in_person_notes, company_notes, salary
     } = job
     this.id = id
     this.companyName = company_name
@@ -127,14 +127,11 @@ class Job{
     this.phone1 = phone1
     this.phone2 = phone2
     this.hasApplied = has_applied
-    this.applicationDate = application_date
     this.website = website
     this.applicationLink = application_link
     this.hasPhoneInterview = has_phone_interview
-    this.phoneInterviewDate = phone_interview_date
     this.phoneInterviewNotes = phone_interview_notes
     this.hasInPerson = has_in_person
-    this.inPersonInterview = in_person_interview
     this.inPersonNotes = in_person_notes
     this.companyNotes = company_notes
     this.salary = salary

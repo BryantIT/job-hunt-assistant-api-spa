@@ -31,7 +31,8 @@ class ProfilePage extends PageManager{
   handleJobClick(e){
     if(e.target.tagName === "A"){
       const jobId = e.target.dataset.id
-      this.renderJob(jobId)
+      const job = this.getJobById(jobId)
+      this.renderJob(job)
     }
   }
 
@@ -51,18 +52,68 @@ class ProfilePage extends PageManager{
 
   async handleUpdateJob(e){
     e.preventDefault()
-    debugger
-    const [id, companyName, contactName, email, street, address2, city, state,
-          zipcode, fax, phone1, phone2, website, applicationLink, hasApplied,
-          hasPhoneInterview, hasInPerson, salary] = Array.from(e.target.querySelectorAll('input')).map(i => i.value)
+    const [id, companyName, contactName, email, street, fax, phone1, phone2,
+      hasApplied, website, applicationLink, hasPhoneInterview, hasInPerson,
+      salary, address2, city, state, zipcode] = Array.from(e.target.querySelectorAll('input')).map(i => i.value)
     const [phoneInterviewNotes, inPersonNotes, companyNotes] = Array.from(e.target.querySelectorAll('textarea')).map(i => i.value)
-    const params = {id, companyName, contactName, email, street, address2, city,
-                    state, zipcode, fax, phone1, phone2, hasApplied, website,
-                    applicationLink, hasPhoneInterview, phoneInterviewNotes,
-                    hasInPerson, inPersonNotes, companyNotes, salary}
+    const params = {companyName, contactName, email, street, fax, phone1, phone2,
+      hasApplied, website, applicationLink, hasPhoneInterview,
+      phoneInterviewNotes, hasInPerson, inPersonNotes, companyNotes,
+      salary, address2, city, state, zipcode, id}
+    const job = this.getJobById(id)
+    const oldJob = new Job({id, companyName, contactName, email, street, fax,
+      phone1, phone2, hasApplied, website, applicationLink, hasPhoneInterview,
+      phoneInterviewNotes, hasInPerson, inPersonNotes, companyNotes, salary,
+      address2, city, state, zipcode})
+      job.companyName = companyName
+      job.contactName = contactName
+      job.email = email
+      job.street = street
+      job.fax = fax
+      job.phone1 = phone1
+      job.phone2 = phone2
+      job.hasApplied = hasApplied
+      job.website = website
+      job.applicationLink = applicationLink
+      job.hasPhoneInterview = hasPhoneInterview
+      job.phoneInterviewNotes = phoneInterviewNotes
+      job.hasInPerson = hasInPerson
+      job.inPersonNotes = inPersonNotes
+      job.companyNotes = companyNotes
+      job.salary = salary
+      job.address2 = address2
+      job.city = city
+      job.state = state
+      job.zipcode = zipcode
+      this.renderJob(job)
     try{
-      const jobData = this.adapter.updateJob(params)
+      const {id, companyName, contactName, email, street, fax, phone1, phone2,
+        hasApplied, website, applicationLink, hasPhoneInterview, phoneInterviewNotes,
+        hasInPerson, inPersonNotes, companyNotes, salary, address2, city, state,
+        zipcode} = await this.adapter.updateJob(params)
     }catch(err){
+
+      job.companyName = oldJob.companyName
+      job.contactName = oldJob.contactName
+      job.email = oldJob.email
+      job.street = oldJob.street
+      job.fax = oldJob.fax
+      job.phone1 = oldJob.phone1
+      job.phone2 = oldJob.phone2
+      job.hasApplied = oldJob.hasApplied
+      job.website = oldJob.website
+      job.applicationLink = oldJob.applicationLink
+      job.hasPhoneInterview = oldJob.hasPhoneInterview
+      job.phoneInterviewNotes = oldJob.phoneInterviewNotes
+      job.hasInPerson = oldJob.hasInPerson
+      job.inPersonNotes = oldJob.inPersonNotes
+      job.companyNotes = oldJob.companyNotes
+      job.salary = oldJob.salary
+      job.address2 = oldJob.address2
+      job.city = oldJob.city
+      job.state = oldJob.state
+      job.zipcode = oldJob.zipcode
+      this.renderJob(job)
       this.handleError(err)
     }
   }
@@ -75,6 +126,10 @@ class ProfilePage extends PageManager{
     }catch(err){
       this.handleError(err)
     }
+  }
+
+  getJobById(id){
+    return this.user.jobs.find(j => j.id == id)
   }
 
   get staticHTML(){
@@ -96,8 +151,7 @@ class ProfilePage extends PageManager{
     `)
   }
 
-  renderJob(id){
-    const job = this.user.jobs.find(j => j.id == id)
+  renderJob(job){
     if(job){
       this.container.innerHTML = job.showHTML
       this.jobBindingsAndEventListeners()

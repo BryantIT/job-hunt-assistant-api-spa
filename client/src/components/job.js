@@ -10,6 +10,7 @@ class Job{
           </header>
           <article class="box">
             <form id="${job ? 'edit' : 'new'}-job-form">
+                ${job ? '<input type="hidden" value="' + job.id + '">' : ''}
               <div class="row uniform">
                 <div class="6u 12u$(xsmall)">
                   <input type="text" name="company_name" id="company_name" placeholder="Company Name" value="${job ? job.companyName : ''}" required>
@@ -55,37 +56,26 @@ class Job{
                   <label for="has_applied">Applied?</label>
                 </div>
                 <div class="6u 12u$(xsmall)">
-                  Application Date:<br>
-                  <input type="date" name="application_date" id="application_date" value="${job ? job.applicationDate : ''}">
-                </div>
-                <div class="6u$ 12u$(xsmall)">
                   <input type="checkbox" name="has_phone_interview" id="has_phone_interview" value="${job ? job.hasPhoneInterview : ''}">
                   <label for="has_phone_interview">Phone Interview</label>
-                </div>
-                <div class="6u 12u$(xsmall)">
-                  Phone Interview Date:<br>
-                  <input type="date" name="phone_interview_date" id="phone_interview_date" value="${job ? job.phoneInterviewDate : ''}">
                 </div>
                 <div class="6u$ 12u$(xsmall)">
                   <input type="checkbox" name="has_in_person" id="has_in_person" value="${job ? job.hasInPerson : ''}">
                   <label for="has_in_person">In Person Interview</label>
                 </div>
                 <div class="6u 12u$(xsmall)">
-                  In Person Interview Date:<br>
-                  <input type="date" name="in_person_interview" id="in_person_interview" value="${job ? job.inPersonInterview : ''}">
-                </div>
-                <div class="6u$ 12u$(xsmall)">
                 Salary:<br>
                   <input type="number" name="salary" id="salary" value="${job ? job.salary : ''}">
                 </div>
               </div>
             </form>
           </article>
-          <p>Add Notes</p>
-          <a href="#two" class="more">Learn More</a>
+          <div class="12u$">
+            <ul class="actions">
+              <li><button type="submit" class="button special fit">${job ? 'Update' : 'Create'}</button></li>
+            </ul>
+          </div>
         </div>
-      </section>
-      <section id="two" class="wrapper post bg-img" data-bg="banner2.jpg" style="background-image: url(assets/images/banner2.jpg);">
         <div class="inner current">
           <article class="box">
             <header>
@@ -98,11 +88,7 @@ class Job{
             Overall Company Notes
               <textarea id="company_notes" rows="4" value="${job ? job.companyNotes : ''}"></textarea>
           </article>
-          <div class="12u$">
-            <ul class="actions">
-              <li><button type="submit" class="button special fit">Submit</button></li>
-            </ul>
-          </div>
+
         </div>
       </section>
     `)
@@ -171,14 +157,13 @@ class Job{
               </p>
               <p>
                 <li><strong>Application Information</strong></li>
-                <strong>Applied:</strong> ${this.hasApplied ? "Yes" : "No"} <strong>Application Date:</strong>${this.applicationDate}<br>
-                <strong>Phone Interview:</strong> ${this.hasPhone_Interview ? "Yes" : "No"} <strong>Phone Interview Date:</strong>${this.phoneInterviewDate}<br>
-                <strong>In-Person Interview:</strong> ${this.hasInPerson ? "Yes" : "No"} <strong>In-Person Interview Date:</strong>${this.inPersonInterview}<br>
+                <strong>Applied:</strong> ${this.hasApplied ? "Yes" : "No"}<br>
+                <strong>Phone Interview:</strong> ${this.hasPhone_Interview ? "Yes" : "No"}<br>
+                <strong>In-Person Interview:</strong> ${this.hasInPerson ? "Yes" : "No"}<br>
               </p>
           </article>
           <a href="#two" class="more">Learn More</a>
           </ul>
-
         </div>
       </section>
 

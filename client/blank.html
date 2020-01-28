@@ -18,7 +18,8 @@
         <h3>Add Your Job Prospect</h3>
       </header>
       <article class="box">
-        <form id="signup-form">
+        <form id="${job ? 'edit' : 'new'}-job-form">
+            ${job ? '<input type="hidden" value="' + job.id + '">' : ''}
           <div class="row uniform">
             <div class="6u 12u$(xsmall)">
               <input type="text" name="company_name" id="company_name" placeholder="Company Name" value="${job ? job.companyName : ''}" required>
@@ -30,91 +31,75 @@
               <input type="email" name="email" id="email" placeholder="Email" value="${job ? job.email : ''}">
             </div>
             <div class="6u$ 12u$(xsmall)">
-              <input type="text" name="street" id="street" placeholder="Street" value="${job ? job.companyName : ''}">
-            </div>
-            <div class="6u$ 12u$(xsmall)">
-              <input type="text" name="address2" id="address2" placeholder="Apt/Floor/Building" value="${job ? job.companyName : ''}">
-            </div>
-            <div class="6u$ 12u$(xsmall)">
-              <input type="text" name="city" id="city" placeholder="City" value="${job ? job.companyName : ''}">
-            </div>
-            <div class="6u$ 12u$(xsmall)">
-              <input type="text" name="state" id="State" placeholder="State" value="${job ? job.companyName : ''}">
-            </div>
-            <div class="6u$ 12u$(xsmall)">
-              <input type="number" name="zipcode" id="zipcode" placeholder="Zipcode" value="${job ? job.companyName : ''}">
+              <input type="text" name="street" id="street" placeholder="Street" value="${job ? job.street : ''}">
             </div>
             <div class="6u 12u$(xsmall)">
-              <input type="text" name="fax" id="fax" placeholder="Fax">
+              <input type="text" name="address2" id="address2" placeholder="Apt/Floor/Building" value="${job ? job.address2 : ''}">
             </div>
             <div class="6u$ 12u$(xsmall)">
-              <input type="text" name="phone1" id="phone1" placeholder="Phone Number" value="${job ? job.companyName : ''}">
+              <input type="text" name="city" id="city" placeholder="City" value="${job ? job.city : ''}">
             </div>
             <div class="6u 12u$(xsmall)">
-              <input type="text" name="phone2" id="phone2" placeholder="Alt Phone Number" value="${job ? job.companyName : ''}">
+              <input type="text" name="state" id="State" placeholder="State" value="${job ? job.state : ''}">
             </div>
             <div class="6u$ 12u$(xsmall)">
-              <input type="url" name="website" id="website" placeholder="Website" value="${job ? job.companyName : ''}">
-            </div>
-            <div class="6u$ 12u$(xsmall)">
-              <input type="url" name="application_link" id="application_link" placeholder="Link to Application Page" value="${job ? job.companyName : ''}">
-            </div>
-            <div class="6u$ 12u$(xsmall)">
-              <input type="checkbox" name="has_applied" id="has_applied" placeholder="Website" value="${job ? job.companyName : ''}">
+              <span>Zipcode:&nbsp</span><input type="number" name="zipcode" id="zipcode" placeholder="Zipcode" value="${job ? job.zipcode : ''}">
             </div>
             <div class="6u 12u$(xsmall)">
-              Application Date:<br>
-              <input type="date" name="application_date" id="application_date" value="${job ? job.companyName : ''}">
+              <input type="text" name="phone1" id="phone1" placeholder="Phone Number" value="${job ? job.phone1 : ''}">
             </div>
             <div class="6u$ 12u$(xsmall)">
-              <input type="checkbox" name="has_phone_interview" id="has_phone_interview" placeholder="Website" value="${job ? job.companyName : ''}">
+              <input type="text" name="phone2" id="phone2" placeholder="Alt Phone Number" value="${job ? job.phone2 : ''}">
             </div>
             <div class="6u 12u$(xsmall)">
-              Application Date:<br>
-              <input type="date" name="phone_interview_date" id="phone_interview_date" value="${job ? job.companyName : ''}">
+            <input type="text" name="fax" id="fax" placeholder="Fax Number" value="${job ? job.fax : ''}">
             </div>
             <div class="6u$ 12u$(xsmall)">
-              <input type="checkbox" name="has_in_person" id="has_in_person" placeholder="Website" value="${job ? job.companyName : ''}">
+              <input type="text" name="website" id="website" placeholder="Website" value="${job ? job.website : ''}">
             </div>
             <div class="6u 12u$(xsmall)">
-              Application Date:<br>
-              <input type="date" name="in_person_interview" id="in_person_interview" value="${job ? job.companyName : ''}">
+              <input type="text" name="application_link" id="application_link" placeholder="Link to Application Page" value="${job ? job.applicationLink : ''}">
+            </div>
+            <div class="6u$ 12u$(small)">
+              <input type="checkbox" name="has_applied" id="has_applied" value="${job ? job.hasApplied : ''}">
+              <label for="has_applied">Applied?</label>
+            </div>
+            <div class="6u 12u$(xsmall)">
+              <input type="checkbox" name="has_phone_interview" id="has_phone_interview" value="${job ? job.hasPhoneInterview : ''}">
+              <label for="has_phone_interview">Phone Interview</label>
             </div>
             <div class="6u$ 12u$(xsmall)">
-              <input type="number" name="salary" id="salary" placeholder="Website" value="${job ? job.companyName : ''}">
+              <input type="checkbox" name="has_in_person" id="has_in_person" value="${job ? job.hasInPerson : ''}">
+              <label for="has_in_person">In Person Interview</label>
             </div>
-            <div class="12u$">
-              <ul class="actions">
-                <li><button type="submit" class="button special fit">Signup</button></li>
-              </ul>
+            <div class="6u 12u$(xsmall)">
+            Salary:<br>
+              <input type="number" name="salary" id="salary" value="${job ? job.salary : ''}">
             </div>
           </div>
-        </form>
+          <div class="12u$">
+          <ul class="actions">
+          <li><button type="submit" class="button special fit">${job ? 'Update' : 'Create'}</button></li>
+          </ul>
+          </div>
       </article>
-      <p>Add Notes</p>
-      <a href="#two" class="more">Learn More</a>
     </div>
-  </section>
-  <section id="two" class="wrapper post bg-img" data-bg="banner2.jpg" style="background-image: url(assets/images/banner2.jpg);">
     <div class="inner current">
       <article class="box">
         <header>
           <h2>Notes</h2>
         </header>
-        <div class="6u 12u$(xsmall)">
-          <input type="textarea" name="phone_interview_notes" id="phone_interview_notes" value="${job ? job.companyName : ''}">
-        </div>
-        <div class="6u$ 12u$(xsmall)">
-          <input type="textarea" name="in_person_notes" id="in_person_notes" placeholder="Website" value="${job ? job.companyName : ''}">
-        </div>
-        <div class="6u 12u$(xsmall)">
-          <input type="textarea" name="company_notes" id="company_notes" value="${job ? job.companyName : ''}">
-        </div>
+        Phone Interview Notes
+          <textarea id="phone_interview_notes" rows="4" value="${job ? job.phoneInterviewNotes : ''}"></textarea>
+        In Person Interview Notes
+          <textarea id="in_person_notes" rows="4" value="${job ? job.inPersonNotes : ''}"></textarea>
+        Overall Company Notes
+          <textarea id="company_notes" rows="4" value="${job ? job.companyNotes : ''}"></textarea>
+          </form>
       </article>
-      <a href="#one" class="button alt small">Back</a>
+
     </div>
   </section>
-
 </body>
 
 </html>

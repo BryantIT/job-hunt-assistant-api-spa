@@ -21,6 +21,7 @@ gem 'puma', '~> 4.1'
 gem 'pry'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
+# JSON web token
 gem 'devise-jwt'
 gem 'rspec-rails', groups: [:development, :test]
 gem 'fabrication', groups: [:development, :test]

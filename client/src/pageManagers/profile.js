@@ -21,16 +21,24 @@ class ProfilePage extends PageManager{
     editButton.addEventListener('click', this.formalizeJob.bind(this))
   }
 
+<<<<<<< HEAD
   // newBindingsAndEventListeners(){
   //   const newButton = this.container.querySelector('#new-button')
   //   newButton.addEventListener('click', this.newJob.bind(this))
   // }
+=======
+  newBindingsAndEventListeners(){
+    const newButton = this.container.querySelector('#new-button')
+    newButton.addEventListener('click', this.newJob.bind(this))
+  }
+>>>>>>> 559ceab3ab825d007bdbc645441cd0bf8d815001
 
   jobFormBindingsAndEventListeners(){
     const form = this.container.querySelector('form')
     form.addEventListener('submit', this.handleUpdateJob.bind(this))
   }
 
+<<<<<<< HEAD
   // newJobFormBindingsAndEventListeners(){
   //   const form = this.container.querySelector('form')
   //   form.addEventListener('submit', this.handleUpdateJob.bind(this))
@@ -40,6 +48,17 @@ class ProfilePage extends PageManager{
   //   this.container.innerHTML = Job.formHTML()
   //
   // }
+=======
+  newJobFormBindingsAndEventListeners(){
+    const form = this.container.querySelector('form')
+    form.addEventListener('submit', this.handleUpdateJob.bind(this))
+  }
+
+  newJob(){
+    this.container.innerHTML = Job.formHTML()
+
+  }
+>>>>>>> 559ceab3ab825d007bdbc645441cd0bf8d815001
 
 
 

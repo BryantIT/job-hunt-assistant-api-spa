@@ -26,7 +26,7 @@ class User{
                     <th>Applied?</th>
                   </tr>
                 </thead>
-                    ${this.jobs.map(j => j.tbAndLinkHTML).join()}
+                    ${this.jobs.map(j => j.tbAndLinkHTML).join("")}
               </table>
             </div>
             <ul></ul>

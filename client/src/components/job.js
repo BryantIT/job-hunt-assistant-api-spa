@@ -10,62 +10,62 @@ class Job{
           </header>
           <article class="box">
             <form id="${job ? 'edit' : 'new'}-job-form">
-                ${job ? '<input type="hidden" value="' + job.id + '">' : ''}
+                ${job ? '<input data-name="id" type="hidden" value="' + job.id + '">' : ''}
               <div class="row uniform">
                 <div class="6u 12u$(xsmall)">
-                  <input type="text" name="company_name" id="company_name" placeholder="Company Name" value="${job ? job.companyName : ''}" required>
+                  <input type="text" data-name="company_name" id="company_name" placeholder="Company Name" value="${job ? job.companyName : ''}" required>
                 </div>
                 <div class="6u$ 12u$(xsmall)">
-                  <input type="text" name="contact_name" id="contact_name" placeholder="Contact Name" value="${job ? job.contactName : ''}">
+                  <input type="text" data-name="contact_name" id="contact_name" placeholder="Contact Name" value="${job ? job.contactName : ''}">
                 </div>
                 <div class="6u 12u$(xsmall)">
-                  <input type="email" name="email" id="email" placeholder="Email" value="${job ? job.email : ''}">
+                  <input type="email" data-name="email" id="email" placeholder="Email" value="${job ? job.email : ''}">
                 </div>
                 <div class="6u$ 12u$(xsmall)">
-                  <input type="text" name="street" id="street" placeholder="Street" value="${job ? job.street : ''}">
+                  <input type="text" data-name="street" id="street" placeholder="Street" value="${job ? job.street : ''}">
                 </div>
                 <div class="6u 12u$(xsmall)">
-                  <input type="text" name="address2" id="address2" placeholder="Apt/Floor/Building" value="${job ? job.address2 : ''}">
+                  <input type="text" data-name="address2" id="address2" placeholder="Apt/Floor/Building" value="${job ? job.address2 : ''}">
                 </div>
                 <div class="6u$ 12u$(xsmall)">
-                  <input type="text" name="city" id="city" placeholder="City" value="${job ? job.city : ''}">
+                  <input type="text" data-name="city" id="city" placeholder="City" value="${job ? job.city : ''}">
                 </div>
                 <div class="6u 12u$(xsmall)">
-                  <input type="text" name="state" id="State" placeholder="State" value="${job ? job.state : ''}">
+                  <input type="text" data-name="state" id="State" placeholder="State" value="${job ? job.state : ''}">
                 </div>
                 <div class="6u$ 12u$(xsmall)">
-                  <span>Zipcode:&nbsp</span><input type="number" name="zipcode" id="zipcode" placeholder="Zipcode" value="${job ? job.zipcode : ''}">
+                  <span>Zipcode:&nbsp</span><input type="number" data-name="zipcode" id="zipcode" placeholder="Zipcode" value="${job ? job.zipcode : ''}">
                 </div>
                 <div class="6u 12u$(xsmall)">
-                  <input type="text" name="phone1" id="phone1" placeholder="Phone Number" value="${job ? job.phone1 : ''}">
+                  <input type="text" data-name="phone1" id="phone1" placeholder="Phone Number" value="${job ? job.phone1 : ''}">
                 </div>
                 <div class="6u$ 12u$(xsmall)">
-                  <input type="text" name="phone2" id="phone2" placeholder="Alt Phone Number" value="${job ? job.phone2 : ''}">
+                  <input type="text" data-name="phone2" id="phone2" placeholder="Alt Phone Number" value="${job ? job.phone2 : ''}">
                 </div>
                 <div class="6u 12u$(xsmall)">
-                <input type="text" name="fax" id="fax" placeholder="Fax Number" value="${job ? job.fax : ''}">
+                <input type="text" data-name="fax" id="fax" placeholder="Fax Number" value="${job ? job.fax : ''}">
                 </div>
                 <div class="6u$ 12u$(xsmall)">
-                  <input type="text" name="website" id="website" placeholder="Website" value="${job ? job.website : ''}">
+                  <input type="text" data-name="website" id="website" placeholder="Website" value="${job ? job.website : ''}">
                 </div>
                 <div class="6u 12u$(xsmall)">
-                  <input type="text" name="application_link" id="application_link" placeholder="Link to Application Page" value="${job ? job.applicationLink : ''}">
+                  <input type="text" data-name="application_link" id="application_link" placeholder="Link to Application Page" value="${job ? job.applicationLink : ''}">
                 </div>
                 <div class="6u$ 12u$(small)">
-                  <input type="checkbox" name="has_applied" id="has_applied" value="${job ? job.hasApplied : ''}">
+                  <input type="checkbox" data-name="has_applied" id="has_applied" value="${job ? job.hasApplied : ''}">
                   <label for="has_applied">Applied?</label>
                 </div>
                 <div class="6u 12u$(xsmall)">
-                  <input type="checkbox" name="has_phone_interview" id="has_phone_interview" value="${job ? job.hasPhoneInterview : ''}">
+                  <input type="checkbox" data-name="has_phone_interview" id="has_phone_interview" value="${job ? job.hasPhoneInterview : ''}">
                   <label for="has_phone_interview">Phone Interview</label>
                 </div>
                 <div class="6u$ 12u$(xsmall)">
-                  <input type="checkbox" name="has_in_person" id="has_in_person" value="${job ? job.hasInPerson : ''}">
+                  <input type="checkbox" data-name="has_in_person" id="has_in_person" value="${job ? job.hasInPerson : ''}">
                   <label for="has_in_person">In Person Interview</label>
                 </div>
                 <div class="6u 12u$(xsmall)">
                 Salary:<br>
-                  <input type="number" name="salary" id="salary" value="${job ? job.salary : ''}">
+                  <input type="number" data-name="salary" id="salary" value="${job ? job.salary : ''}">
                 </div>
               </div>
               <div class="12u$">
@@ -81,11 +81,11 @@ class Job{
               <h2>Notes</h2>
             </header>
             Phone Interview Notes
-              <textarea id="phone_interview_notes" rows="4" value="${job ? job.phoneInterviewNotes : ''}"></textarea>
+              <textarea id="phone_interview_notes" data-name="phone_interview_notes" rows="4" value="${job ? job.phoneInterviewNotes : ''}"></textarea>
             In Person Interview Notes
-              <textarea id="in_person_notes" rows="4" value="${job ? job.inPersonNotes : ''}"></textarea>
+              <textarea id="in_person_notes" data-name="in_person_notes" rows="4" value="${job ? job.inPersonNotes : ''}"></textarea>
             Overall Company Notes
-              <textarea id="company_notes" rows="4" value="${job ? job.companyNotes : ''}"></textarea>
+              <textarea id="company_notes" data-name="company_notes" rows="4" value="${job ? job.companyNotes : ''}"></textarea>
               </form>
           </article>
 

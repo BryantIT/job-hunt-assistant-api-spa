@@ -67,9 +67,6 @@ class ProfilePage extends PageManager{
 
   async handleUpdateJob(e){
     e.preventDefault()
-    // const [id, companyName, contactName, email, street, fax, phone1, phone2,
-    //   hasApplied, website, applicationLink, hasPhoneInterview, hasInPerson,
-    //   salary, address2, city, state, zipcode] = Array.from(e.target.querySelectorAll('input')).map(i => i.value)
     const data={}
     const inputs = Array.from(e.target.querySelectorAll('input'))
     for (let input of inputs) {
@@ -79,18 +76,7 @@ class ProfilePage extends PageManager{
     for (let textArea of textAreas) {
       data[textArea.dataset.name] = textArea.value
     }
-    // const params = {companyName, contactName, email, street, fax, phone1, phone2,
-    //   hasApplied, website, applicationLink, hasPhoneInterview,
-    //   phoneInterviewNotes, hasInPerson, inPersonNotes, companyNotes,
-    //   salary, address2, city, state, zipcode, id}
-
-    // TODO add if statment for if id does not exist
     const job = this.getJobById(data.id)
-    // const oldJob = new Job({id, companyName, contactName, email, street, fax,
-    //   phone1, phone2, hasApplied, website, applicationLink, hasPhoneInterview,
-    //   phoneInterviewNotes, hasInPerson, inPersonNotes, companyNotes, salary,
-    //   address2, city, state, zipcode})
-
 
     try{
       let result = await this.adapter.updateJob(data)
@@ -106,41 +92,15 @@ class ProfilePage extends PageManager{
         job.website = result.website
         job.applicationLink = result.application_link
         job.hasPhoneInterview = result.has_phone_interview
-        job.phoneInterviewNotes = result.phone_interview_notes
         job.hasInPerson = result.has_in_person
-        job.inPersonNotes = result.in_person_notes
-        job.companyNotes = result.company_notes
         job.salary = result.salary
         job.address2 = result.address2
         job.city = result.city
         job.state = result.state
         job.zipcode = result.zipcode
         this.renderJob(job)
-      // update job and render
     }catch(err){
-
-      // job.companyName = oldJob.company_name
-      // job.contactName = oldJob.contact_name
-      // job.email = oldJob.email
-      // job.street = oldJob.street
-      // job.fax = oldJob.fax
-      // job.phone1 = oldJob.phone1
-      // job.phone2 = oldJob.phone2
-      // job.hasApplied = oldJob.hasApplied
-      // job.website = oldJob.website
-      // job.applicationLink = oldJob.applicationLink
-      // job.hasPhoneInterview = oldJob.hasPhoneInterview
-      // job.phoneInterviewNotes = oldJob.phoneInterviewNotes
-      // job.hasInPerson = oldJob.hasInPerson
-      // job.inPersonNotes = oldJob.inPersonNotes
-      // job.companyNotes = oldJob.companyNotes
-      // job.salary = oldJob.salary
-      // job.address2 = oldJob.address2
-      // job.city = oldJob.city
-      // job.state = oldJob.state
-      // job.zipcode = oldJob.zipcode
-      // this.renderJob(job)
-      // this.handleError(err)
+      this.handleError(err)
     }
   }
 

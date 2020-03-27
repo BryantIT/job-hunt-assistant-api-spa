@@ -26,7 +26,7 @@ class User{
                     <th>Applied?</th>
                   </tr>
                 </thead>
-                    ${this.jobs.map(j => j.tbAndLinkHTML).join("")}
+                    ${this.jobs.sort((j1, j2) => j1.id - j2.id ).map(j => j.tbAndLinkHTML).join("")}
               </table>
             </div>
             <ul></ul>

@@ -14,15 +14,15 @@ class ProfileAdapter {
   }
 
   async updateJob(params) {
-    const {companyName, contactName, email, street, address2, city, state,
+    const {company_name, contact_name, email, street, address2, city, state,
       zipcode, fax, phone1, phone2, hasApplied, website, applicationLink,
       hasPhoneInterview, phoneInterviewNotes, hasInPerson, inPersonNotes,
       companyNotes, salary, id} = params
     const url = `${this.baseURL}/jobs/${id}`
     const body = {
       job: {
-        company_name: companyName,
-        contact_name: contactName,
+        company_name: company_name,
+        contact_name: contact_name,
         email,
         street,
         address2,

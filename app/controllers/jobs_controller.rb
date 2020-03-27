@@ -2,7 +2,7 @@ class JobsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    jobs = current_user.jobs
+    jobs = current_user.jobs.order('company_name')
 
     render json: jobs
   end
@@ -22,6 +22,7 @@ class JobsController < ApplicationController
   end
 
   def update
+
     job = Job.find(params[:id])
     authorize_user_resource(job)
     job.update(job_params)

@@ -21,24 +21,16 @@ class ProfilePage extends PageManager{
     editButton.addEventListener('click', this.formalizeJob.bind(this))
   }
 
-<<<<<<< HEAD
   // newBindingsAndEventListeners(){
   //   const newButton = this.container.querySelector('#new-button')
   //   newButton.addEventListener('click', this.newJob.bind(this))
   // }
-=======
-  newBindingsAndEventListeners(){
-    const newButton = this.container.querySelector('#new-button')
-    newButton.addEventListener('click', this.newJob.bind(this))
-  }
->>>>>>> 559ceab3ab825d007bdbc645441cd0bf8d815001
 
   jobFormBindingsAndEventListeners(){
     const form = this.container.querySelector('form')
     form.addEventListener('submit', this.handleUpdateJob.bind(this))
   }
 
-<<<<<<< HEAD
   // newJobFormBindingsAndEventListeners(){
   //   const form = this.container.querySelector('form')
   //   form.addEventListener('submit', this.handleUpdateJob.bind(this))
@@ -48,17 +40,6 @@ class ProfilePage extends PageManager{
   //   this.container.innerHTML = Job.formHTML()
   //
   // }
-=======
-  newJobFormBindingsAndEventListeners(){
-    const form = this.container.querySelector('form')
-    form.addEventListener('submit', this.handleUpdateJob.bind(this))
-  }
-
-  newJob(){
-    this.container.innerHTML = Job.formHTML()
-
-  }
->>>>>>> 559ceab3ab825d007bdbc645441cd0bf8d815001
 
 
 
@@ -109,54 +90,57 @@ class ProfilePage extends PageManager{
     //   phone1, phone2, hasApplied, website, applicationLink, hasPhoneInterview,
     //   phoneInterviewNotes, hasInPerson, inPersonNotes, companyNotes, salary,
     //   address2, city, state, zipcode})
-    //   job.companyName = companyName
-    //   job.contactName = contactName
-    //   job.email = email
-    //   job.street = street
-    //   job.fax = fax
-    //   job.phone1 = phone1
-    //   job.phone2 = phone2
-    //   job.hasApplied = hasApplied
-    //   job.website = website
-    //   job.applicationLink = applicationLink
-    //   job.hasPhoneInterview = hasPhoneInterview
-    //   job.phoneInterviewNotes = phoneInterviewNotes
-    //   job.hasInPerson = hasInPerson
-    //   job.inPersonNotes = inPersonNotes
-    //   job.companyNotes = companyNotes
-    //   job.salary = salary
-    //   job.address2 = address2
-    //   job.city = city
-    //   job.state = state
-    //   job.zipcode = zipcode
-      this.renderJob(job)
+
+
     try{
-      await this.adapter.updateJob(data)
+      let result = await this.adapter.updateJob(data)
+      console.log(result, job)
+        job.companyName = result.company_name
+        job.contactName = result.contact_name
+        job.email = result.mail
+        job.street = result.street
+        job.fax = result.fax
+        job.phone1 = result.phone1
+        job.phone2 = result.phone2
+        job.hasApplied = result.has_applied
+        job.website = result.website
+        job.applicationLink = result.application_link
+        job.hasPhoneInterview = result.has_phone_interview
+        job.phoneInterviewNotes = result.phone_interview_notes
+        job.hasInPerson = result.has_in_person
+        job.inPersonNotes = result.in_person_notes
+        job.companyNotes = result.company_notes
+        job.salary = result.salary
+        job.address2 = result.address2
+        job.city = result.city
+        job.state = result.state
+        job.zipcode = result.zipcode
+        this.renderJob(job)
       // update job and render
     }catch(err){
 
-      job.companyName = oldJob.companyName
-      job.contactName = oldJob.contactName
-      job.email = oldJob.email
-      job.street = oldJob.street
-      job.fax = oldJob.fax
-      job.phone1 = oldJob.phone1
-      job.phone2 = oldJob.phone2
-      job.hasApplied = oldJob.hasApplied
-      job.website = oldJob.website
-      job.applicationLink = oldJob.applicationLink
-      job.hasPhoneInterview = oldJob.hasPhoneInterview
-      job.phoneInterviewNotes = oldJob.phoneInterviewNotes
-      job.hasInPerson = oldJob.hasInPerson
-      job.inPersonNotes = oldJob.inPersonNotes
-      job.companyNotes = oldJob.companyNotes
-      job.salary = oldJob.salary
-      job.address2 = oldJob.address2
-      job.city = oldJob.city
-      job.state = oldJob.state
-      job.zipcode = oldJob.zipcode
-      this.renderJob(job)
-      this.handleError(err)
+      // job.companyName = oldJob.company_name
+      // job.contactName = oldJob.contact_name
+      // job.email = oldJob.email
+      // job.street = oldJob.street
+      // job.fax = oldJob.fax
+      // job.phone1 = oldJob.phone1
+      // job.phone2 = oldJob.phone2
+      // job.hasApplied = oldJob.hasApplied
+      // job.website = oldJob.website
+      // job.applicationLink = oldJob.applicationLink
+      // job.hasPhoneInterview = oldJob.hasPhoneInterview
+      // job.phoneInterviewNotes = oldJob.phoneInterviewNotes
+      // job.hasInPerson = oldJob.hasInPerson
+      // job.inPersonNotes = oldJob.inPersonNotes
+      // job.companyNotes = oldJob.companyNotes
+      // job.salary = oldJob.salary
+      // job.address2 = oldJob.address2
+      // job.city = oldJob.city
+      // job.state = oldJob.state
+      // job.zipcode = oldJob.zipcode
+      // this.renderJob(job)
+      // this.handleError(err)
     }
   }
 

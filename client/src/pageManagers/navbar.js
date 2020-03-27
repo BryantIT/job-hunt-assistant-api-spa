@@ -10,8 +10,6 @@ class Navbar extends PageManager{
   }
 
   initBindingsAndEventListeners(){
-    // this.menu = document.getElementById('menu')
-    // this.menu.addEventListener('click', this.handleClick.bind(this))
     this.container.addEventListener('click', this.handleClick.bind(this))
   }
 
@@ -22,7 +20,9 @@ class Navbar extends PageManager{
         const route = e.target.id.split('-')[0]
         if (route !== this.currentPage()){
           this.redirect(route)
+
         }
+        console.log(route, this.currentPage())
       } else{
         this.adapter.token = null
         this.redirect('welcome')
@@ -36,7 +36,6 @@ class Navbar extends PageManager{
     if (this.is_authenticated){
       return (`
             <h2><a href="#" id="profile-link">Profile</a></h2>
-            <h2><a href="#" id="jobs-link">Jobs</a></h2>
             <h2><a href="#" id="logout-link">Logout</a></h2>
         `)
     } else {

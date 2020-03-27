@@ -75,29 +75,13 @@ class Job{
               </div>
           </article>
         </div>
-        <div class="inner current">
-          <article class="box">
-            <header>
-              <h2>Notes</h2>
-            </header>
-            Phone Interview Notes
-              <textarea id="phone_interview_notes" data-name="phone_interview_notes" rows="4" value="${job ? job.phoneInterviewNotes : ''}"></textarea>
-            In Person Interview Notes
-              <textarea id="in_person_notes" data-name="in_person_notes" rows="4" value="${job ? job.inPersonNotes : ''}"></textarea>
-            Overall Company Notes
-              <textarea id="company_notes" data-name="company_notes" rows="4" value="${job ? job.companyNotes : ''}"></textarea>
-              </form>
-          </article>
-
-        </div>
       </section>
     `)
   }
 
   constructor(job){
     const {id, company_name, contact_name, email, street, fax, phone1, phone2,
-      has_applied, website, application_link, has_phone_interview,
-      phone_interview_notes, has_in_person, in_person_notes, company_notes,
+      has_applied, website, application_link, has_phone_interview, has_in_person,
       salary, address2, city, state, zipcode
     } = job
     this.id = id
@@ -112,10 +96,7 @@ class Job{
     this.website = website
     this.applicationLink = application_link
     this.hasPhoneInterview = has_phone_interview
-    this.phoneInterviewNotes = phone_interview_notes
     this.hasInPerson = has_in_person
-    this.inPersonNotes = in_person_notes
-    this.companyNotes = company_notes
     this.salary = salary
     this.address2 = address2
     this.city = city
@@ -137,7 +118,7 @@ class Job{
           <header>
           <h2>${this.companyName}</h2>
           </header>
-          <button data-id="${this.id}" id="edit-dog" class="button special fit">Edit</button>
+          <button data-id="${this.id}" id="edit-job" class="button special fit">Edit</button>
             <ul class="alt">
               <strong>Website</strong> &nbsp&nbsp || &nbsp&nbsp <strong>Application Website</strong><br>
               ${this.website} &nbsp&nbsp || &nbsp&nbsp ${this.applicationLink}
@@ -162,37 +143,7 @@ class Job{
                 <strong>In-Person Interview:</strong> ${this.hasInPerson ? "Yes" : "No"}<br>
               </p>
           </article>
-          <a href="#two" class="more">Learn More</a>
           </ul>
-        </div>
-      </section>
-
-      <section id="two" class="wrapper post bg-img" data-bg="banner2.jpg" style="background-image: url(assets/images/banner2.jpg);">
-        <div class="inner current">
-          <article class="box">
-          <header>
-          <h2>${this.companyName}</h2>
-          </header>
-          <h2>Notes</h2>
-                  <p></p>
-                  <div class="row">
-                    <div class="6u 12u$(small)">
-                      <h3>Company Notes</h3>
-                      <p>${this.companyNotes ? this.companyNotes : "None"}</p>
-                    </div>
-                    <div class="6u$ 12u$(small)">
-                      <h3>Phone Interview Notes</h3>
-                      <p>${this.phoneInterviewNotes ? this.phoneInterviewNotes : "None"}</p>
-                    </div>
-                    <!-- Break -->
-                    <div class="6u$ 12u$(small)">
-                      <h3>In-Person Notes</h3>
-                      <p>${this.inPersonNotes ? this.inPersonNotes : "None"}</p>
-                    </div>
-                  </div>
-
-          </article>
-          <a href="#one" class="button alt small">Back</a>
         </div>
       </section>
       `)
@@ -203,7 +154,7 @@ class Job{
       <tbody>
         <tr>
           <td><a href="#" data-id="${this.id}">${this.companyName}</a></td>
-          <td>${this.companyNotes}</td>
+          <td>${this.city}, ${this.state}</td>
           <td>${this.hasApplied ? "Yes" : "No"}</td>
         </tr>
       </tbody>

@@ -22,7 +22,7 @@ class User{
                 <thead>
                   <tr>
                     <th>Company Name</th>
-                    <th>Company Notes</th>
+                    <th>Location</th>
                     <th>Applied?</th>
                   </tr>
                 </thead>
@@ -33,7 +33,6 @@ class User{
           </article>
         </div>
       </section>
-
       `)
   }
 }

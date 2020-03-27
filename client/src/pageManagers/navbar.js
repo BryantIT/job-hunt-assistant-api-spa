@@ -22,7 +22,6 @@ class Navbar extends PageManager{
           this.redirect(route)
 
         }
-        console.log(route, this.currentPage())
       } else{
         this.adapter.token = null
         this.redirect('welcome')
@@ -35,7 +34,6 @@ class Navbar extends PageManager{
   get staticHTML(){
     if (this.is_authenticated){
       return (`
-            <h2><a href="#" id="profile-link">Profile</a></h2>
             <h2><a href="#" id="logout-link">Logout</a></h2>
         `)
     } else {

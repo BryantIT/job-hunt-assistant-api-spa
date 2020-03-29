@@ -14,6 +14,7 @@ class ProfilePage extends PageManager{
   profileBindingsAndEventListeners(){
     const jobList = this.container.querySelector('table')
     jobList.addEventListener('click', this.handleJobClick.bind(this))
+    this.newJobFormBindingsAndEventListeners()
   }
 
   jobBindingsAndEventListeners(){
@@ -21,27 +22,38 @@ class ProfilePage extends PageManager{
     editButton.addEventListener('click', this.formalizeJob.bind(this))
   }
 
-  // newBindingsAndEventListeners(){
-  //   const newButton = this.container.querySelector('#new-button')
-  //   newButton.addEventListener('click', this.newJob.bind(this))
-  // }
+  backButtonBindingsAndEventListeners(){
+    const backButton = this.container.querySelector('#backButton')
+    backButton.addEventListener('click', this.renderUser.bind(this))
+  }
+
 
   jobFormBindingsAndEventListeners(){
     const form = this.container.querySelector('form')
     form.addEventListener('submit', this.handleUpdateJob.bind(this))
   }
 
-  // newJobFormBindingsAndEventListeners(){
-  //   const form = this.container.querySelector('form')
-  //   form.addEventListener('submit', this.handleUpdateJob.bind(this))
-  // }
+  newJobFormBindingsAndEventListeners(){
+    const form = this.container.querySelector('form')
+    form.addEventListener('submit', this.handleNewJob.bind(this))
+  }
 
-  // newJob(){
-  //   this.container.innerHTML = Job.formHTML()
-  //
-  // }
+  async handleNewJob(e){
+    e.preventDefault()
+    const data={}
+    const inputs = Array.from(e.target.querySelectorAll('input'))
+    for (let input of inputs) {
+      data[input.dataset.name] = input.value
+    }
 
-
+    try{
+      let result = await this.adapter.newJob(data)
+      const job = new Job(result)
+        this.renderJob(job)
+    }catch(err){
+      this.handleError(err)
+    }
+  }
 
   handleJobClick(e){
     if(e.target.tagName === "A"){
@@ -71,10 +83,6 @@ class ProfilePage extends PageManager{
     const inputs = Array.from(e.target.querySelectorAll('input'))
     for (let input of inputs) {
       data[input.dataset.name] = input.value
-    }
-    const textAreas = Array.from(document.querySelectorAll('textarea'))
-    for (let textArea of textAreas) {
-      data[textArea.dataset.name] = textArea.value
     }
     const job = this.getJobById(data.id)
 
@@ -141,6 +149,7 @@ class ProfilePage extends PageManager{
     if(job){
       this.container.innerHTML = job.showHTML
       this.jobBindingsAndEventListeners()
+      this.backButtonBindingsAndEventListeners()
     }else this.handleError({
       type: "404 Not Found",
       msg: "Job was not found"

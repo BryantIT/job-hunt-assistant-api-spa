@@ -52,6 +52,41 @@ class ProfileAdapter {
     return await res.json()
   }
 
+  async newJob(params) {
+    const {company_name, contact_name, email, street, address2, city, state,
+      zipcode, fax, phone1, phone2, has_applied, website, application_link,
+      has_phone_interview, has_in_person, salary} = params
+    const url = `${this.baseURL}/jobs`
+    const body = {
+      job: {
+        company_name: company_name,
+        contact_name: contact_name,
+        email,
+        street,
+        address2,
+        city,
+        state,
+        zipcode,
+        fax,
+        phone1,
+        phone2,
+        has_applied: has_applied,
+        website,
+        application_link: application_link,
+        has_phone_interview: has_phone_interview,
+        has_in_person: has_in_person,
+        salary
+      }
+    }
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: this.headers,
+      body: JSON.stringify(body)
+    })
+    await this.baseAdapter.checkStatus(res)
+    return await res.json()
+  }
+
   async getUser() {
     const res = await fetch(`${this.baseURL}/profile`, {
       headers: this.headers

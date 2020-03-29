@@ -10,6 +10,9 @@ class User{
 
   get profileHTML(){
     return (`
+      <div>
+      ${Job.formHTML()}
+      </div>
       <section id="one" class="wrapper post bg-img" data-bg="banner3.jpg" style="background-image: url(assets/images/banner3.jpg);">
         <div class="inner current">
           <header>

@@ -142,6 +142,7 @@ class Job{
                 <strong>Phone Interview:</strong> ${this.hasPhoneInterview ? "Yes" : "No"}<br>
                 <strong>In-Person Interview:</strong> ${this.hasInPerson ? "Yes" : "No"}<br>
               </p>
+              <li><button type="submit" class="button special fit" id="backButton">Back</button></li>
           </article>
           </ul>
         </div>
